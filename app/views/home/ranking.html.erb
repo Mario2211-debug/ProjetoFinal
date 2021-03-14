@@ -1,0 +1,105 @@
+<div class="uk-width-2-3@m my-lg-5 text-center m-auto">
+  <h2 class="text-white">Rankings</h2>
+  <h5 class="text-white">
+  Quer saber quais as empresas com melhor índice de solução ou as organizações
+  mais reclamadas dos últimos 30 dias ou até mesmo dos últimos 6 meses?
+  Tudo isso você pode encontrar aqui!</h5>
+  <p  class="text-white">A partir da avaliação que o consumidor dá para a organização nós construímos o nosso Ranking e,
+  assim, ajudamos pessoas que querem analisar como está a situação das empresas no site,
+  qual sua colocação e descobrir como vai o seu atendimento. </p>
+          </div>
+
+<div class="row">
+
+                              <div class="col-xl-4">
+                                <div class="card">
+                                  <div class="card-header border-0 pb-0 d-sm-flex d-block">
+                                    <div>
+                                      <h4 class="card-title mb-1">Empresas com maior índice de solução</h4>
+                                      <small class="mb-0">Palaras a condizer</small>
+                                    </div>
+                                  </div>
+                                  <%@empresa.each_with_index do |r, i|%>
+                                  <%if r.indiceS >= 1.0%>
+                                  <div class="card-body p-0 pt-3">
+                                    <div class="media items-list-1">
+                                      <span class="number col-1 px-0 align-self-center"><%= i+1%></span>
+                                      <div class="media-body col-sm-4 col-6 col-xxl-6 px-0">
+                                        <h5 class="mt-0 mb-3 text-black"><%=link_to r.nome, empresa_path(r)%></h5>
+                                      </div>
+                                      <div class="media-footer ml-auto col-3 px-0 d-flex align-self-center align-items-center">
+                												<div>
+                													<h3 class="mb-0 font-w600 text-black"><%=number_to_percentage(r.indiceS, precision:0)%></h3>
+                												</div>
+                											</div>
+                                    </div>
+                              </div>
+                              <% end %>
+                              <% end %>
+                                  </div>
+                                </div>
+
+
+
+                              <div class="col-xl-4">
+                                <div class="card">
+                                  <div class="card-header border-0 pb-0 d-sm-flex d-block">
+                                    <div>
+                                      <h4 class="card-title mb-1">Melhores Índices de Voltar a Fazer Negócios</h4>
+                                      <small class="mb-0">Palaras a condizer</small>
+                                    </div>
+                                  </div>
+                                  <%@empresa.each do |r|%>
+                                  <%if r.indiceNN >= 1.0%>
+                                  <div class="card-body p-0 pt-3">
+                                    <div class="media items-list-1">
+                                      <span class="number col-1 px-0 align-self-center">#1</span>
+                                      <div class="media-body col-sm-4 col-6 col-xxl-6 px-0">
+                                        <h5 class="mt-0 mb-3 text-black"><%=link_to r.nome, empresa_path(r)%></h5>
+                                      </div>
+                                      <div class="media-footer ml-auto col-3 px-0 d-flex align-self-center align-items-center">
+                                        <div>
+                                          <h3 class="mb-0 font-w600 text-black"><%=number_to_percentage(r.indiceNN)%></h3>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <% end %>
+                                  <% end %>
+                                  </div>
+                                </div>
+
+
+
+
+                                  <div class="col-xl-4">
+                                    <div class="card">
+                                      <div class="card-header border-0 pb-0 d-sm-flex d-block">
+                                        <div>
+                                          <h4 class="card-title mb-1">Melhores Notas médias</h4>
+                                          <small class="mb-0">Palaras a condizer</small>
+                                        </div>
+                                      </div>
+                                      <%@empresa.each do |r|%>
+                                      <%if r.indiceNN >= 1.0%>
+                                      <div class="card-body p-0 pt-3">
+                                        <div class="media items-list-1">
+                                          <span class="number col-1 px-0 align-self-center">#1</span>
+                                          <div class="media-body col-sm-4 col-6 col-xxl-6 px-0">
+                                            <h5 class="mt-0 mb-3 text-black"><%=link_to r.nome, empresa_path(r)%></h5>
+                                          </div>
+                                          <div class="media-footer ml-auto col-3 px-0 d-flex align-self-center align-items-center">
+                                            <div>
+                                              <h3 class="mb-0 font-w600 text-black"><%=number_to_percentage(r.indiceNN)%></h3>
+                                            </div>
+                                          </div>
+                                        </div>
+                                  </div>
+                                  <% end %>
+                                  <% end %>
+                                      </div>
+                                    </div>
+
+
+
+</div>

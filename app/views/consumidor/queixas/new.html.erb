@@ -1,0 +1,65 @@
+<% @queixa.build_ordem %>
+<div class="main_content_inner">
+<div class="card">
+<div class="card-header">
+<h4 class="card-title">Reclame!</h4>
+</div>
+<div class="card-body">
+<div class="basic-form">
+<%= form_for @queixa ,:url => {:action => :create} ,remote: true do |f| %>
+<div class="form-row">
+
+                  <div class="form-group col-md-6">
+                    <%= f.label :Procure_a_empresa, class:'uk-form-label', for:'float-textarea'%>
+                      <%= f.collection_select(:empresa_id, Empresa.where(situacao_id:6), :id, :nome, {:prompt=> 'Procurar empresa' }, {:class=>'uk-select fa fa-search', :style => 'background-color: #def0f8;'} ) %>
+                      <p>Não encontra a empresa que procura?, <%=link_to 'Tente aqui', new_consumidor_addempresa_path%></p>
+
+                    </div>
+
+<div class="form-group col-md-6">
+  <%= f.label :Assunto, class:"uk-form-label", for:'float-textarea'%>
+    <%= f.grouped_collection_select(:assunto_id, Empresa.order(:nome), :assuntos, :nome, :id, :nome, {:prompt=> 'Por favor selecione o assunto' },  {:class=>'uk-select fa fa-search', :style => 'background-color: #def0f8;'}) %>
+  </div>
+
+                <div class="form-group col-md-6">
+                  <%= f.label :titulo, class:'uk-form-label', for:'float-textarea'%>
+                  <%= f.text_field :titulo, placeholder: 'Titulo', :required => true, class:'uk-input', style:'background-color: #def0f8;' %>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <%= f.label :Motivo_da_queixa, class:'uk-form-label', for:'float-textarea'%>
+                  <%= f.text_field :descricao, placeholder: 'O que aconteceu?', :required => true, class:'uk-input', style:'background-color: #def0f8;'%>
+                </div>
+
+
+</div>
+<div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <%= f.label :Como_se_sente?, class:'uk-form-label', for:'float-textarea'%>
+                                      <%= f.collection_select(:sentimento_id, Sentimento.order(:id), :id, :nome, {:prompt=> 'Informe como se sente' }, {:class=>'uk-select fa fa-search', :style => 'background-color: #def0f8;'} ) %>
+                                      </div>
+
+                                      <%= f.fields_for :ordem do |form| %>
+
+                                    <div class="form-group col-md-6">
+                                    <%= form.label :Numero_de_ordem, class:'uk-form-label', for:'float-textarea'%>
+                                    <%= form.text_field :numero, :required => true, placeholder:'Numero da faturação', class:"uk-input", style:'background-color: #def0f8;'%>
+                                  </div>
+
+
+
+                                      <div class="form-group col-md-6">
+                                    <%= form.label :Selecione_o_ficheiro, class:'uk-form-label', for:'float-textarea'%>
+                                      <%= form.file_field :file,  multiple: true, :required => true, placeholder:'Selecione o ficheiro', prompt:'<i class="fa fa-plus"></i>'.html_safe, class:"btn btn-primary border rounded", style:"height: 100px;width: 100px;background-color: #dadfe3;"%>
+                                    </div>
+
+                                        <% end %>
+</div>
+</div>
+<div class="text-right">
+<%= f.submit "Reclamar!", class:"button primary mr-2"%>
+</div>
+<% end %>
+    </div>
+  </div>
+</div>

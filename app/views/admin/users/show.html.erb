@@ -1,0 +1,114 @@
+<% provide(:title, "Admin Page") %>
+<div class="content-wrapper">
+<div class="row">
+  <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row">
+                      <%=image_tag @user.displayed_image, loading: "lazy", alt:@user.nome, class:"img-lg rounded"%>
+                      <div class="ml-3">
+                        <h6><%=@user.nome%></h6>
+                        <p class="text-muted"><%=@user.email%></p>
+                        <p class="mt-2 text-success font-weight-bold"><%=@user.kind%></p>
+                      </div>
+                    </div>
+                    <br>
+                <address>
+                  <p class="font-weight-bold">Tipo de contacto:</p>
+                  <p><%= @user.contacto.tipo%></p>
+                  <br>
+
+                  <p class="font-weight-bold">Contacto:</p>
+                  <p><%= @user.contacto.valor%></p>
+                </address>
+                  </div>
+                </div>
+  </div>
+
+  <div class="col-lg-4 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Dados pessoais</h4>
+                      <address>
+                      <p class="font-weight-bold">Nome:</p>
+                      <p><%= @user.nome%></p>
+<br>
+                      <p class="font-weight-bold">Email:</p>
+                      <p><%= @user.email%></p>
+<br>
+                      <p class="font-weight-bold">Numero do bilhete de indentidade:</p>
+                      <p><%= @user.B_I%></p>
+<br>
+                      <%if @user.kind == 'Consumidor'%>
+                      <p class="font-weight-bold">Empresa:</p>
+                      <p>não</p>
+                      <% else %>
+                      <p>sim</p>
+                      <% end %>
+                        </address>
+
+                    </div>
+                  </div>
+  </div>
+
+  <div class="col-lg-4 grid-margin stretch-card">
+      <div class="card">
+      <div class="card-body">
+    <h4 class="card-title">Endereço</h4>
+              <address>
+                <p class="font-weight-bold">Cidade:</p>
+                <p><%= @user.endereco.cidade%></p>
+                <br>
+
+                <p class="font-weight-bold">Destrito ou municipio:</p>
+                <p><%= @user.endereco.destrito%></p>
+                <br>
+
+                <p class="font-weight-bold">Bairro:</p>
+                <p><%= @user.endereco.bairro%></p>
+                <br>
+
+                <p class="font-weight-bold">Rua:</p>
+                <p><%= @user.endereco.rua%></p>
+                <br>
+
+                <p class="font-weight-bold">Numero da residência:</p>
+                <p><%= @user.endereco.numero%></p>
+              </address>
+
+                </div>
+                </div>
+  </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="d-flex flex-row justify-content-between">
+                                <h4 class="card-title">Reclamações</h4>
+                                <p class="text-muted mb-1 small">Ver todas</p>
+                              </div>
+                              <%@queixas.each do |f|%>
+                              <div class="preview-list">
+                                <div class="preview-item bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+                                  <div class="preview-thumbnail">
+                            <%=image_tag f.empresa.displayed_image, width:"100", class:"img-fluid rounded-circle", loading: "lazy", alt:f.user.nome, class:"rounded-circle", width:"150"%>
+                                  </div>
+                                  <div class="preview-item-content d-flex flex-grow">
+                                    <div class="flex-grow ">
+                                      <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                                        <h6 class="preview-subject"><%=link_to f.empresa.nome, admin_empresa_path(current_admin.id, f)%></h6>
+                                        <p class="text-muted text-small"><%=f.updated_at.strftime("%m")%> atrás</p>
+                                      </div>
+                                      <p class="text-muted"><%=link_to f.descricao, admin_queixa_path(current_admin.id, f), class:"text-white"%></p>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <% end %>
+                            </div>
+                          </div>
+  </div>
+  </div>
+      </div>

@@ -1,0 +1,20 @@
+<div class="demo-hero bg-gradient-primary uk-visible@m">
+      <div class="uk-container mt-sm-5 mb-md-0 my-md pb-0">
+          <div class="uk-width-2-3@m my-lg-5 text-center m-auto">
+       <h1 class="text-white">Bem vindo ao teu site de reclamações em angola </h1>
+        <br>
+              <p class="text-white">O mais simples e amigável para o desenvolvedor, rico em recursos e altamente personalizável.
+                Seguimos os mais altos padrões da indústria para trazer a você o melhor modelo social  </p>
+ <br>
+                      <!-- form search-->
+                      <div class="head_search">
+                              <%=form_tag(search_page_path, :method => "get") do %>
+                              <div class="head_search_cont" aria-expanded="false">
+                            <%=search_field_tag :search, params[:q], placeholder:'Procure por empresas , assuntos e mais', autocomplete:false%>
+                              </div>
+                              <%end%>
+                      </div>
+
+          </div>
+      </div>
+  </div>

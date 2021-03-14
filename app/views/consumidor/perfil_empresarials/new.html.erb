@@ -1,0 +1,23 @@
+<%provide(:title, 'Cadastre a sua empresa')%>
+<div class="main_content_inner">
+    <div class="section-small">
+  <div class="row ">
+    <div class="col-xl-6 col-lg-5">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Solicitar perfil empresarial</h4>
+  <%= form_for(@perfil, url: consumidor_perfil_empresarials_path) do |f|%>
+  <div class="form-group">
+    <%= f.label :Selecione_a_empresa_que_pretende_representar %>     <br />
+    <%= f.collection_select(:empresa_id, Empresa.where(situacao_id:6, nif:nil, nif:""), :id, :nome, {:prompt => 'Selecione' }, {:class => 'uk-select fa fa-search', :style => 'background-color: #def0f8;'}) %>
+  </div>
+  <div class="text-right">
+    <%= f.submit "Fazer o pediido", class: "button primary mr-2"%><br>
+  </div>
+<% end %>
+</div>
+</div>
+          </div>
+        </div>
+      </div>
+      </div>

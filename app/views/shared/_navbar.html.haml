@@ -1,0 +1,12 @@
+%li.dropdown{ 'data-behavior': 'notifications' }
+           %a.dropdown-toggle{ 'data-toggle': 'dropdown', role: 'button', 'aria-expanded': false }
+             %span.glyphicon.glyphicon-bell
+             %span.badge{ 'data-behavior': 'unread-count' }
+             %span.caret
+
+           %ul#notifications.dropdown-menu{ 'data-behavior': 'notification-items' }
+             %li.dropdown-header.text-uppercase Notification
+             - if current_user.notifications.unread.empty?
+               %li
+                 .container-fluid
+                   %p.text-center.small No new notifications

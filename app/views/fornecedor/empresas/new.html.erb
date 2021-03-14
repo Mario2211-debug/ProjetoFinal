@@ -1,0 +1,88 @@
+<h3>Informe Sobre a empresa</h3>
+<% @empresa.build_addempresa %>
+
+<%= form_for @empresa,:url => {:action => :create}  do |f| %>
+
+<%= f.fields_for :addempresa do |form| %>
+
+<div class="field">
+<%= form.label :Estado_do_pedido%><br />
+<%= f.collection_select :situacao_id, Situacao.order(:id), :id, :nome, include_blank: true %> <br />
+</div>
+<br>
+<br>
+  <% end %>
+
+    <div class="field">
+    <%= f.label :Nome%><br />
+    <%= f.text_field :nome, autofocus: true, autocomplete:  "Valor" %>
+    </div>
+
+
+    <div class="field">
+  <%= f.label :Numero_de_identificação_fiscal%><br />
+  <%= f.text_field :nif, autofocus: true, autocomplete: "tipo" %>
+</div>
+
+
+<div class="field">
+  <%= f.label :Ramo_de_atividade %>     <br />
+  <%= f.collection_select :atividade_id, Atividade.order(:id), :id, :nome, include_blank: true %> <br />
+</div>
+
+
+<div class="field">
+<%= f.label :Responsável_da_empresa%><br />
+<%= f.text_field :responsavel, autofocus: true, autocomplete: "tipo" %>
+</div>
+
+
+
+<div class="field">
+<%= f.label :Email_da_empresa%><br />
+<%= f.text_field :email, autofocus: true, autocomplete: "tipo" %>
+</div>
+
+
+  <%= f.fields_for :endereco do |form| %>
+  <div class="field">
+  <%= form.label :Rua%><br />
+  <%= form.text_field :rua, autofocus: true, autocomplete: "name" %>
+</div>
+
+  <div class="field">
+  <%= form.label :Bairro%><br />
+  <%= form.text_field :bairro, autofocus: true, autocomplete:  "email" %>
+</div>
+
+  <div class="field">
+  <%= form.label :Numero_da_casa%><br />
+  <%= form.text_field :numero, autofocus: true, autocomplete:  "name" %>
+</div>
+
+
+  <div class="field">
+  <%= form.label :Cidade_ou_Província%><br />
+  <%= form.text_field :cidade, autofocus: true, autocomplete:  "Cidade" %>
+</div>
+  <% end %>
+
+  <%= f.fields_for :contacto do |form| %>
+  <div class="field">
+
+  <%= form.label :Tipo_de_contacto%><br />
+  <%= form.text_field :tipo, autofocus: true, autocomplete: "tipo" %>
+</div>
+
+  <div class="field">
+  <%= form.label :Valor%><br />
+  <%= form.text_field :valor, autofocus: true, autocomplete:  "Valor" %>
+  </div>
+<br>
+<br>
+
+
+    <% end %>
+
+  <%= f.submit "Criar Empresa" %>
+  <% end %>

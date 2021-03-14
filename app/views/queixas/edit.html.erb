@@ -1,0 +1,30 @@
+<div class="content-wrapper" style="margin-top:100px;">
+<div class="row">
+<div class="col-md-7 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                <blockquote class="blockquote blockquote-primary card-title">
+                    <p style="margin-left: 20px;"><%= @queixa.replica%></p>
+                    </blockquote>
+                    <%= form_for(@queixa)  do  |f| %>
+                    <div class="form-group">
+                      <label>O problema foi resolvido?</label>
+                      <%= f.collection_select(:situacao_id, Situacao.where(escopo:'Queixa'), :id, :nome, {:prompt=> 'Informe se o problema foi resolvido' }, { :style => 'background-color: rgb(223,226,231);',  :class => ' form-control select2-hidden-accessible', :style =>'width:30%',  tabindex:'-1'} ) %>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Como se sente?</label>
+                        <%= f.collection_select(:situacao_id, Sentimento.order(:id), :id, :nome, {:prompt=> 'Informe como se sente' }, { :style => 'background-color: rgb(223,226,231);',  :class => ' form-control select2-hidden-accessible', :style =>'width:30%',  tabindex:'-1'} ) %>
+                        </div>
+
+                    <div class="form-group">
+                      <%=f.label :Digite_a_mensagem_de_resposta%>
+                      <%=f.text_field :mensagem, autofocus: true, placeholder:'Digite a resposta', class:'form-control form-control-lg'%>
+                  </div>
+                  <%= f.submit "Responder", class: "btn btn-success btn-fw" %>
+                  <% end %>
+                </div>
+              </div>
+        </div>
+                            </div>
+                          </div>

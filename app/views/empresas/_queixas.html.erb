@@ -1,0 +1,21 @@
+<div class="post" id="<%=dom_id queixa%>">
+<div class="post-heading">
+<div class="post-title">
+  <h4> <%=@queixas.assunto.nome%> </h4>
+  </div>
+</div>
+<div class="post-description">
+<p> <%=link_to @queixas.descricao, queixa_path(@queixas)%></p>
+<div class="post-state-details">
+<%if @queixas.situacao_id == 1%>
+    <p class="badge badge-success">Resolvida</p><p class="badge">5 <span> hrs</span></p>
+<%elsif @queixas.situacao_id == 2%>
+     <p class="badge badge-danger">Não Resolvida</p>
+ <%else%>
+     <p class="badge badge-danger">Não resolvida</p><p class="badge">5 <span> hrs</span></p>
+<%end%>
+    </div>
+</div>
+</div>
+<br>
+<%end%>

@@ -1,0 +1,38 @@
+<div class="content-wrapper">
+<div class="row">
+<div class="col-lg-9 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Solicitações de perfil em análise</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+														<th>Nome do suarioempresa</th>
+														<th>Nome da empresa</th>
+														<th>Data do pedido</th>
+                          </tr>
+                        </thead>
+												<%@perfil_empps.each do |a| %>
+                        <tbody>
+                          <tr>
+                            <td><%= a.user.nome%> </td>
+                            <td><%= a.empresa.nome%> </td>
+														<td><%=a.created_at.strftime("%d %B %Y")%> </td>
+														<td>
+															<%=link_to 'Mostrar', action: 'show', id: a%>
+														</td>
+                          <td>
+                            <%= link_to 'editar', edit_admin_perfil_empresarial_path(current_admin.id, a), method: :post%>
+                        </td>
+
+											  </tbody>
+                        <%end%>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+						</div>
+					</div>

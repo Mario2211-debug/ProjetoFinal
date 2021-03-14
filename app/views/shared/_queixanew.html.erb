@@ -1,0 +1,73 @@
+      <div class="login-clean" style="height: 962px;">
+        <%= form_with model: @queixa do |f| %>
+
+  <div class="form-row">
+      <div class="col">
+        <span style="margin: 65px;font-size: 22px;">
+          <strong>Faça uma queixa</strong></span></div>
+  </div>
+  <div class="illustration" style="height: 74px;width: 236px;margin: 6px;margin-top: -16px;margin-right: 0px;margin-left: 0px;margin-bottom: -33px;padding: 0px;padding-top: 0px;padding-bottom: 0px;padding-left: 19px;padding-right: 0px;">
+  </div>
+
+
+<%= f.label :Assunto, class:'mb-0', for:'float-textarea', style:'height: 28px;font-size: 16px;width: 117px;margin-top: 0px;margin-bottom: 0px;padding-top: 0px;padding-left: -35px;"'%>
+  <div class="form-group" style="width: auto;margin-bottom: 18px;margin-top: 4px;">
+    <%= f.collection_select(:assunto_id, Assunto.order(:id), :id, :nome, {:prompt=> 'Por favor selecione o assunto' }, {:class=>'form-control',  style:'background-color: rgb(223,226,231);' } ) %>
+
+  </div>
+
+
+                <%= f.label :titulo, class:'mb-0', for:'float-textarea', style:'font-size: 16px;height: 30px;'%>
+                <div class="form-group">
+                  <%= f.text_field :titulo, placeholder: 'Titulo', :required => true, class:'form-control', style:'background-color: rgb(223,226,231);' %>
+                </div>
+
+                <%= f.label :Motivo_da_queixa, class:'mb-0', for:'float-textarea', style:'font-size: 16px;height: 30px;'%>
+                <div class="form-group">
+                  <%= f.text_field :descricao, placeholder: 'O que aconteceu?', :required => true, class:'form-control', style:'background-color: rgb(223,226,231);' %>
+                </div>
+
+
+                <%= f.label :Procure_a_empresa, class:'mb-0', for:'float-textarea', style:'font-size: 16px;height: 29px;'%>
+                  <div class="form-group" style="width: auto;margin-bottom: 18px;margin-top: 4px;">
+                    <%= f.collection_select(:empresa_id, Empresa.order(:id), :id, :nome, {:prompt=> 'Procurar empresa' }, {:class=>'form-control fa fa-search',  style:'background-color: rgb(223,226,231);' } ) %>
+                  </div>
+
+
+
+                                  <%= f.label :Como_se_sente?, class:'mb-0', for:'float-textarea', style:'font-size: 16px;height: 29px;'%>
+                                    <div class="form-group" style="width: auto;margin-bottom: 18px;margin-top: 4px;">
+                                      <%= f.collection_select(:sentimento_id, Sentimento.order(:id), :id, :nome, {:prompt=> 'Informe como se sente' }, {:class=>'form-control fa fa-search',  style:'background-color: rgb(223,226,231);' } ) %>
+                                    </div>
+
+                                    <%= f.fields_for :ordem do |form| %>
+                                      <div class="form-group ml-auto" style="max-width: 320px;">
+                                        <label class="mb-0" for="float-textarea"><%= form.label :Ficheiro%></label>
+                                        <%= form.file_field :file, placeholder:'Selecione o ficheiro',class:"border rounded border-white form-control", style:'background-color: #def0f8; ' multiple: true%>
+                                      </div>
+
+
+                                      <div class="form-group ml-auto" style="max-width: 320px;margin-right: -;">
+                                        <label class="mb-0" for="float-textarea"><%= form.label :Numero_de_ordem%></label>
+                                        <%= form.text_field :numero, placeholder:'Numero ou endereco', class:"border rounded border-white form-control", style:'background-color: #def0f8;'%>
+                                      </div>
+
+                                      <% end %>
+
+
+
+                              <label class="mb-0" for="float-textarea" style="font-size: 16px;height: 30px;">Adicionar Fotos, opcional!</label>
+                                  <div class="form-group" style="height: 91px;">
+                                  <label class="border rounded" id="user_group_label" for="user_group_logo" style="height: 100px;width: 100px;background-color: #dadfe3;">&nbsp;
+                                  <button class="btn btn-primary" type="submit" style="width: 50px;margin: 1px;margin-top: 13px;margin-bottom: 0px;background-color: transparent;margin-right: 0px;margin-left: 9px;"><i class="fas fa-plus"></i></button></label>
+                                </div>
+
+
+  <p>
+  <%= f.submit "Reclamar!", class:"btn btn-primary btn-block", style:"width: 150px;background-color: rgb(62,140,228);height: 48px;margin-left: 85px;"%>
+  </p>
+
+
+      <% end %>
+
+            </div>

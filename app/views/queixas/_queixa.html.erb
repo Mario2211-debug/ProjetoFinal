@@ -1,0 +1,21 @@
+
+                <div class="post" id="<%=dom_id queixa%>">
+                <div class="post-heading">
+                <div class="post-title">
+                  <h4> <%=queixa.titulo%></h4>
+                  </div>
+                </div>
+                <div class="post-description">
+                <p> <%=link_to queixa.descricao, queixa_path(queixa)%></p>
+                <div class="post-state-details">
+                <%if queixa.situacao_id == 1%>
+                    <p class="badge badge-success">Resolvida</p><p class="badge"><span>  <%= time_ago_in_words(queixa.updated_at) %></span></p>
+                <%elsif queixa.situacao_id == 2%>
+                     <p class="badge badge-warning">Aguardando resposta</p>
+                 <%else%>
+                     <p class="badge badge-danger">Não resolvida</p><p class="badge"><span>  <%= time_ago_in_words(queixa.updated_at) %></span></p>
+                <%end%>
+                    </div>
+                </div>
+                </div>
+                <br>

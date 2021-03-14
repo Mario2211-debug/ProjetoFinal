@@ -1,0 +1,43 @@
+  <div class="row">
+    <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">Editar</h4>
+                        <div class="form-group">
+                          <%=form_for(@admin)do |f| %>
+
+
+                            <div class="form-group">
+                                                <%= f.label :nome%>
+                                                    <%= f.text_field :nome, placeholder:'Digite o seu nome',class:"form-control"%>
+                                                  </div>
+
+                                    <div class="form-group">
+                                                    <%= f.label :email%>
+                                                    <%= f.text_field :email, placeholder:'Digite o seu email', class:"form-control"%>
+                                                    </div>
+
+                          <div class="form-group">
+                                                <%= f.label :avatar%>
+                                                    <%= f.file_field :avatar, placeholder:'Faça o upload da imagem',class:"form-control"%>
+                                                  </div>
+
+
+                          <div class="form-group">
+                                                    <%= f.label :palavra_passe%>
+                                                    <%= f.text_field :password, placeholder:'Digite uma palavra-passe',class:"form-control"%>
+                                                  </div>
+
+                          <div class="form-group">
+                                                  <%= f.label :Confirmação_da_palavra_passe%>
+                                                      <%= f.text_field :password_confirmation, placeholder:'Confirme a palavra-passe',class:"form-control"%>
+                                                    </div>
+                        </div>
+              <%= f.submit "Salvar mudanças", class: "btn btn-success btn-fw" %>
+                <% end %>
+                        </div>
+
+                    </div>
+
+                  </div>
+                </div>

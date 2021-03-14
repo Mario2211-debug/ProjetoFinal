@@ -1,0 +1,33 @@
+
+                      <%@queixas.each do |q|%>
+                      <div class="grid-margin stretch-card">
+                        <div class="card">
+                        <div class="card-body" style="padding-bottom: 0px;">
+              <h4 class="card-title"><%= q.assunto.nome %> | <%= q.titulo%></h4>
+      <p class="card-description"> Estás  <label class="mr-2 badge badge-danger" style="margin-left: 7px;"><%=q.sentimento.nome%></label>
+      <p style="margin-left: 7px;"><%= q.descricao%> </p>
+
+      <%if q.updated_at<24.hours.ago && q.replica.nil?%>
+      <label class="mr-2 text-danger card-description">
+<i class="fa fa-thumbs-down  style="margin-left:0px;"></i> Sem resposta |
+      <small> <%= time_ago_in_words(q.created_at) %></small>
+            </label>
+      <%elsif q.updated_at>24.hours.ago && queixa.replica.nil?%>
+      <label class="mr-2 card-description">
+<i class="fa fa-warning text-warning" style="margin-left: 0px;"></i>  Aguardando resposta|
+      <small> <%= time_ago_in_words(q.created_at) %></small>
+    </label>
+<%else%>
+      <blockquote class="blockquote blockquote-primary">
+      <p style="margin-left: 20px;"> Replica:  <%= q.replica%></p>
+      </blockquote>
+      <label class="mr-2 card-description">
+        <p class="card-description mr-2" style="margin-left: 7px;"><%= link_to 'Avaliar resposta', edit_queixa_path(q)%> |
+      </label>
+      <%end%>
+
+          </div>
+        </div>
+      </div>
+
+        <%end%>

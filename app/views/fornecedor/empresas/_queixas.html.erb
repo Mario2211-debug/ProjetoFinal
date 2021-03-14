@@ -1,0 +1,26 @@
+<div class="profile-timeline">
+    <ul class="list-unstyled">
+        <li class="timeline-item">
+            <div class="card card-white grid-margin">
+                <div class="card-body">
+                    <div class="timeline-item-header">
+                        <p><%= link_to @empresa.queixas.user.nome %></p>
+                        <p>Reclamou da empresa <%= @perfil_empp.empresa.nome%></p>
+                    </div>
+                    <div class="timeline-item-tittle">
+                        <h3><%= @perfil_empp.empresa.queixas %></h3>
+                    </div>
+                    <div class="timeline-item-post">
+                      <a href="#"><h2><%= @perfil_empp.empresa.queixas %></h2></a>
+                        <div class="timeline-options">
+<i class="fa fa-thumbs-down"></i> Não respondida | <small> </small></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+</div>
+<!-- Row -->

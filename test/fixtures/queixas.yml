@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sentimento: one
+  avaliacao: one
+  user: one
+  empresa: one
+  situacao: one
+  assunto: one
+
+two:
+  sentimento: two
+  avaliacao: two
+  user: two
+  empresa: two
+  situacao: two
+  assunto: two

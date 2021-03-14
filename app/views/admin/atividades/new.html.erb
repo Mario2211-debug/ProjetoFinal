@@ -1,0 +1,21 @@
+
+<div class="content-wrapper">
+  <div class="row ">
+    <div class="col-6 grid-margin">
+      <div class="card">
+        <div class="card-body">
+<%= form_for @atividade,:url => {:action => :create}  do |f| %>
+    <div class="field">
+    <%= f.label :Nome%><br />
+    <%= f.text_field :nome, autofocus: true, autocomplete:  "Valor" %>
+    </div>
+    <br>
+    <%=f.submit 'Criar', class:'btn badge-success'%>
+
+
+  <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>

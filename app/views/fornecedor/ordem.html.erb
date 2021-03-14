@@ -1,0 +1,63 @@
+<div class="row">
+                    <div class="col-lg-10">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-sm mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="align-middle">Ordem de faturamento</th>
+                                                <th class="align-middle pr-7">Data</th>
+                                                <th class="align-middle" style="min-width: 12.5rem;">Assunto</th>
+                                                <th class="align-middle text-right">Situacao</th>
+                                                <th class="align-middle text-right"></th>
+                                                <th class="no-sort"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="orders">
+                                            <tr class="btn-reveal-trigger">
+                                              <%@queixa.each do |f| %>
+                                                  <td class="py-2"><a href="#">
+                                         <%if f.ordem == nil%>
+                                         <strong class="text-danger">Reportar</strong>
+                                        <%else%>
+                                        <strong>#<%=f.ordem.numero%> </strong>
+                                        <%end%>
+
+                                        </a> por <strong><%=f.user.nome%></strong>
+                                          <br><a href="mailto:ricky@example.com"><%=f.user.email%></a>
+                                                </td>
+                                                <td class="py-2"><%=f.created_at.strftime("%d %B %Y")%></td>
+                                                <td class="py-2"><%=f.assunto.nome%></td>
+                                                <td class="py-2 text-right"><span class="badge badge-success">Completed<span class="ml-1 fa fa-check"></span></span></td>
+                                              <td class="py-2 text-right">
+                                                    <div class="dropdown text-sans-serif">
+                                                      <button class="btn btn-primary tp-btn-light sharp" type="button" id="order-dropdown-0" data-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
+                                                        <span>
+                                                          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1">
+                                                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect>
+                                                            <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                                                            <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                                                            <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                                                          </g>
+                                                        </svg>
+                                                      </span>
+                                                      </button>
+                                                        <div class="dropdown-menu dropdown-menu-right border py-0" aria-labelledby="order-dropdown-0">
+                                                            <div class="py-2">
+                                                              <a class="dropdown-item" href="#!">Aceitar</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item text-danger" href="#!">Reportar</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <%end%>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

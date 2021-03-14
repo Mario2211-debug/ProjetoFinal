@@ -1,0 +1,82 @@
+<div class="content-wrapper">
+<div class="row">
+  <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row">
+                      <%=image_tag @perfil_empp.user.displayed_image, loading: "lazy", alt:@perfil_empp.user.nome, class:"img-lg rounded"%>
+                      <div class="ml-3">
+                        <h6><%=@perfil_empp.user.nome%></h6>
+                        <p class="text-muted"><%=@perfil_empp.user.email%></p>
+                        <p class="mt-2 text-success font-weight-bold"><%=@perfil_empp.user.kind%></p>
+                      </div>
+                    </div>
+                    <br>
+                <address>
+                  <p class="font-weight-bold">Tipo de contacto:</p>
+                  <p><%= @perfil_empp.user.contacto.tipo%></p>
+                  <br>
+
+                  <p class="font-weight-bold">Contacto:</p>
+                  <p><%= @perfil_empp.user.contacto.valor%></p>
+                </address>
+                  </div>
+                </div>
+  </div>
+
+  <div class="col-lg-4 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Dados pessoais</h4>
+                      <address>
+                      <p class="font-weight-bold">Nome:</p>
+                      <p><%= @perfil_empp.user.nome%></p>
+<br>
+                      <p class="font-weight-bold">Email:</p>
+                      <p><%= @perfil_empp.user.email%></p>
+<br>
+                      <p class="font-weight-bold">Numero do bilhete de indentidade:</p>
+                      <p><%= @perfil_empp.user.B_I%></p>
+<br>
+                      <%if @perfil_empp.user.kind == 'Consumidor'%>
+                      <p class="font-weight-bold">Empresa:</p>
+                      <p>não</p>
+                      <% else %>
+                      <p>sim</p>
+                      <% end %>
+                        </address>
+
+                    </div>
+                  </div>
+  </div>
+
+  <div class="col-lg-4 grid-margin stretch-card">
+      <div class="card">
+      <div class="card-body">
+    <h4 class="card-title">Endereço</h4>
+              <address>
+                <p class="font-weight-bold">Cidade:</p>
+                <p><%= @perfil_empp.user.endereco.cidade%></p>
+                <br>
+
+                <p class="font-weight-bold">Destrito ou municipio:</p>
+                <p><%= @perfil_empp.user.endereco.destrito%></p>
+                <br>
+
+                <p class="font-weight-bold">Bairro:</p>
+                <p><%= @perfil_empp.user.endereco.bairro%></p>
+                <br>
+
+                <p class="font-weight-bold">Rua:</p>
+                <p><%= @perfil_empp.user.endereco.rua%></p>
+                <br>
+
+                <p class="font-weight-bold">Numero da residência:</p>
+                <p><%= @perfil_empp.user.endereco.numero%></p>
+              </address>
+
+                </div>
+                </div>
+  </div>
+  </div>
+      </div>

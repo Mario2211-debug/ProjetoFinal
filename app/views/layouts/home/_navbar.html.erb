@@ -1,0 +1,92 @@
+
+                   <div class="main_content-inner">
+
+                   <div class="profile"  style="background-color:transparent;">
+                   <div class="nav-profile uk-sticky" uk-sticky="media : @s" style="">
+                                         <!-- Logo-->
+                                         <!-- sidebar header -->
+                                         <div class="sidebar-header">
+                                             <!-- Logo-->
+                                             <div id="logo">
+                                       <%= link_to "Reclame!AO", root_path, class:"navbar-brand"%>
+                                             </div>
+                                             <span class="btn-close" uk-toggle="target: #wrapper; cls: collapse-sidebar mobile-visible"></span>
+                                         </div>
+                                           <div class="py-md-2 uk-flex-last">
+                                               <a class="button primary mr-2" <%=link_to 'Faça uma reclamação', new_consumidor_queixa_path(current_user.id)%>
+                                                 <!-- user icons -->
+                                               <div class="head_user">
+
+                                                   <!-- profile -image -->
+                                                   <a class="opts_account" href="#" aria-expanded="false">
+                                                     <%=image_tag current_user.displayed_image, loading: "lazy", alt:current_user.nome%>
+
+                                                   <!-- profile dropdown-->
+                                                   <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small" class="dropdown-notifications rounded display-hidden uk-dropdown">
+
+                                                       <!-- User Name / Avatar -->
+                                                               <div class="dropdown-user-details">
+
+                                                               <div class="dropdown-user-cover">
+                                                                   <%=image_tag 'bg-form1.jpg'%>
+                                                               </div>
+
+                                                               <div class="dropdown-user-avatar">
+                                                                   <%=image_tag current_user.displayed_image, loading: "lazy", alt:current_user.nome%>
+                                                               </div>
+                                                               <br>
+                                                               <br>
+                                                               <br>
+
+
+                                                               <div class="dropdown-user-name"><%=current_user.nome%></div>
+                                                           </div>
+
+
+                                                       <ul class="dropdown-user-menu">
+                                                           <li><%=link_to '<i class="fa fa-user" style="color: royalblue;"></i>Perfil'.html_safe, consumidor_index_path(current_user.id)%></li>
+                                                           <li><%=link_to '<i class="fa fa-fire" style="color: #f72b50;"></i>Minhas reclamações'.html_safe, consumidor_index_path(current_user.id)%></li>
+                                                           <li><%=link_to '<i class="fa fa-heart" style="color: #4527a0;"></i>Respondidas'.html_safe, consumidor_index_path(current_user.id)%></li>
+                                                           <%if current_user.empresa_id.nil?%>
+                                                           <li><%=link_to '<i class="fa fa-heart" style="color: #f72b50;"></i>Solicitar perfil empresarial'.html_safe, new_consumidor_perfil_empresarial_path(current_user.id)%></li>
+                                                           <%else%>
+                                                           <li><%=link_to '<i class="fa fa-heart" style="color: #f72b50;"></i>Perfil empresarial'.html_safe, fornecedor_index_path(current_user.empresa_id)%></li>
+                                                           <%end%>
+                                                           <li>
+                                                               <a href="#" id="night-mode" class="btn-night-mode">
+                                                                   <i class="fa fa-moon-o" style="color: #4527a0;"></i> Night mode
+                                                                   <span class="btn-night-mode-switch">
+                                                                       <span class="uk-switch-button"></span>
+                                                                   </span>
+                                                               </a>
+                                                           </li>
+
+                                                           <li><%= link_to '<i class="fa fa-sign-out text-danger"></i>Sair'.html_safe, logout_path, method: "delete" %></li>
+                                                       </ul>
+                                                   </div>
+
+
+                                               </div>
+
+                                           </div>
+
+                                           <div>
+                                               <nav class="responsive-tab ml-lg-3">
+                                                   <ul>
+                                                       <li><%=link_to 'Ranking', ranking_path, class:"uk-active"%></li>
+                                                       <li><%=link_to 'Categoria', categoria_path, class:"uk-active"%></li>
+                                                       <li><%=link_to 'Empresas', empresas_path, class:"uk-active"%></li>
+                                                       <li><%=link_to 'Sobre', empresas_path, class:"uk-active"%></li>
+                                                       <li><%=link_to 'Solicitar cadastro', new_empresa_path, class:"uk-active"%></li>
+                                                      <li><%= select_tag "atividade_id", options_from_collection_for_select(Atividade.all, "id", "nome") %></li>
+
+                                                  </ul>
+                                               </nav>
+                                         </div>
+                   </div>
+                  <div class="uk-sticky-placeholder" style="height: 107px; margin: 0px 0px 10px;" hidden=""></div>
+
+                                   </div>
+                                   <div>
+                                   </div>
+                                 </div>

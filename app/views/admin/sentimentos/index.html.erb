@@ -1,0 +1,40 @@
+<div class="content-wrapper">
+<div class="row">
+<div class="col-lg-5 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Sentimentos</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+														<th>Nome</th>
+                          </tr>
+                        </thead>
+												<%@sentimentos.each do |s|%>
+                        <tbody>
+                          <tr>
+                            <td><%= s.nome%> </td>
+                        		<td>
+																		<%=link_to 'Mostrar', action: 'show', id: s%>
+																	</td>
+
+														<td>
+															<%=link_to 'Editar', action: 'edit', id: s%>
+														</td>
+
+														<td>
+															<%=link_to 'Apagar', {action: 'destroy', id: s}, {method: "delete"} %>
+														</td>
+
+                          </tr>
+											  </tbody>
+											<%end%>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+						</div>
+					</div>

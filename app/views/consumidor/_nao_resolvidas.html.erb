@@ -1,0 +1,47 @@
+<div class="grid-margin stretch-card">
+<div class="card">
+<div class="card-body">
+<h4 class="card-title">Minhas reclamações</h4>
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr>
+  <th>Empresa</th>
+  <th>Reclamação</th>
+  <th>Data</th>
+  <th>Status</th>
+ </tr>
+</thead>
+<tbody>
+  <%@nao_resolvida.each do |q|%>
+<tr>
+  <td><%= q.empresa.nome%></td>
+  <td><%= q.titulo%></td>
+  <td><%= q.created_at%></td>
+
+  <td><%if q.situacao_id == 1%>
+      <div class="badge badge-outline-success">
+        Resolvida
+        </div>
+        <%else%>
+  <div class="badge badge-outline-danger">
+          Não resolvida
+        </div>
+        <%end%>
+  </td>
+  <td>
+    <%=link_to 'Ver', consumidor_queixa_path(current_user.id,q.id)%>
+  </td>
+</tr>
+<%end%>
+</tbody>
+</table>
+</div>
+</div>
+<%= will_paginate @nao_resolvida%>
+</div>
+</div>
+
+<div class="load-more">
+  <button class="btn button">Carregar mais</button>
+</div>

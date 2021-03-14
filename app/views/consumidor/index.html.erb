@@ -1,0 +1,102 @@
+<div class="main_content_inner">
+    <div class="section-small">
+          <div uk-grid="" class="uk-grid">
+      <div class="col-lg-8 grid-margin stretch-card">
+        <div class="card">
+  <div class="card-body">
+  <h4 class="card-title">Minhas reclamações</h4>
+  <div class="table-responsive">
+    <table class="table verticle-middle table-responsive-md">
+            <thead>
+                              <tr>
+                                <th>Empresa</th>
+                                <th>Assunto</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Operações</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% @queixas.each do |q|%>
+                              <tr>
+                                <td><%= q.empresa.nome%></td>
+                                <td><%= q.titulo%></td>
+                                <td><%= q.created_at%></td>
+                                <td><%if q.situacao_id == 1%>
+                                    <div class="badge badge-outline-success">
+                                      Resolvida
+                                      </div>
+                                      <%else%>
+                                <div class="badge badge-outline-danger">
+                                        Não resolvida
+                                      </div>
+                                      <%end%>
+                                </td>
+                                <td>
+                                  <div class="d-flex">
+                                  <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                  <%= link_to '<i class="fa fa-eye"></i>'.html_safe, consumidor_queixa_path(current_user.id,q.id), class:'btn btn-success shadow btn-xs sharp mr-1'%>
+                                  <%= link_to '<i class="fa fa-trash"></i>'.html_safe, apagar_consumidor_path(@queixas), method: :delete, class:'btn btn-danger shadow btn-xs sharp mr-1'%>
+                                  </div>
+                                </td>
+                              </tr>
+                              <%end%>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <%= will_paginate @queixas%>
+                    </div>
+
+                                                <div class="load-more">
+                                                    <button class="btn button">Carregar mais</button>
+                                                </div>
+
+
+
+
+
+
+                  </div>
+
+                  <!-- sidebar -->
+                  <div class="uk-width-expand ml-lg-2">
+
+                            <div class="col-lg-4 col-lg-12 col-sm-12">
+                            						<div class="card overflow-hidden">
+                            							<div class="text-center p-3 overlay-box " style="background-image: url();">
+                            								<div class="profile-photo">
+                                              <%=image_tag current_user.displayed_image, width:"100", height:"150", class:"img-fluid rounded-circle", loading: "lazy", alt:current_user.nome%>
+                            								</div>
+                            								<h3 class="mt-3 mb-1 text-white"><%= current_user.nome%></h3>
+                                            <p class="text-white font-size-sm"><%= current_user.endereco.cidade%>, <%= current_user.endereco.rua%>, <%= current_user.endereco.numero%></p>
+                            								<p class="text-white mb-0"><%= current_user.kind%></p>
+                            							</div>
+                            							<ul class="list-group list-group-flush">
+                            								<li class="list-group-item d-flex justify-content-between">
+                                              <span class="mb-0">E-mail</span>
+                                              <strong class="text-muted"><%= current_user.email%>	</strong></li>
+                            								<li class="list-group-item d-flex justify-content-between">
+                                              <span class="mb-0">Endereço</span>
+                                              <strong class="text-muted"><%=current_user.endereco.cidade%>	</strong></li>
+                            								<li class="list-group-item d-flex justify-content-between">
+                                              <span class="mb-0">Patient Height</span>
+                                              <strong class="text-muted">1.5 M	</strong></li>
+                            								<li class="list-group-item d-flex justify-content-between">
+                                              <span class="mb-0">Patient Weight</span>
+                                              <strong class="text-muted">65 Kg	</strong></li>
+                            							</ul>
+                                                        <div class="card-footer border-0 mt-0">
+
+                                          <%=link_to '<i class="fa fa-bell-o"></i>Editar'.html_safe,  edit_user_path(current_user.id), class:'btn btn-primary'%>
+
+                                                        </div>
+                                                    </div>
+                            					</div>
+                  </div>
+
+                        </div>
+
+                    </div>
+
+                </div>

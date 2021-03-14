@@ -1,0 +1,64 @@
+
+        <!-- sidebar -->
+       <div class="main_sidebar">
+           <div class="side-overlay" uk-toggle="target: #wrapper ; cls: collapse-sidebar mobile-visible"></div>
+
+           <!-- sidebar header -->
+           <div class="sidebar-header">
+               <!-- Logo-->
+               <div id="logo">
+         <%= link_to "Reclame!AO", root_path, class:"navbar-brand", style:"font-size: xx-large; font-family: ui-sans-serif; font-weight: bold;color: white;"%>
+               </div>
+               <span class="btn-close" uk-toggle="target: #wrapper; cls: collapse-sidebar mobile-visible"></span>
+           </div>
+
+           <!-- sidebar Menu -->
+           <div class="sidebar">
+               <div class="sidebar_innr" data-simplebar="init">
+                 <div class="simplebar-wrapper" style="margin: 0px;">
+                   <div class="simplebar-height-auto-observer-wrapper">
+                     <div class="simplebar-height-auto-observer">
+                     </div>
+                   </div><div class="simplebar-mask">
+                     <div class="simplebar-offset" style="right: -20px; bottom: 0px;">
+                 <div class="simplebar-content" style="padding: 0px calc(20px) 0px 0px; height: 100%; overflow: hidden scroll;">
+
+                   <div class="sections">
+                       <ul>
+                           <li>
+                            <%=link_to ' <i class="flaticon-381-television"></i> <span class="nav-text">Home</span>'.html_safe, fornecedor_index_path(current_user.empresa.id)%>
+                            </li>
+                           <li>
+                          <%=link_to '<i class="flaticon-381-bookmark"></i> <span class="nav-text">Ordens</span>'.html_safe,fornecedor_ordem_path(current_user.empresa.id)%>
+
+                           </li>
+
+                           <li>
+                          <%=link_to '<i class="flaticon-381-close"></i> <span class="nav-text">Não Resolvidas</span>'.html_safe, fornecedor_nao_resolvidas_path(current_user.empresa_id)%>
+
+                           </li>
+                           <li>
+                             <%=link_to '<i class="flaticon-381-success"></i> <span class="nav-text">Finalizadas</span>'.html_safe, fornecedor_finalizadas_path(current_user.empresa.id)%>
+
+                           </li>
+                           <li>
+                          <%=link_to '<i class="flaticon-381-close"></i> <span class="nav-text">Desativadas</span>'.html_safe, fornecedor_index_path(current_user.empresa.id)%>
+
+                           </li>
+                       </ul>
+                   </div>
+
+
+               </div></div></div>
+               <div class="simplebar-placeholder" style="width: 255px; height: 989px;"></div>
+             </div>
+               <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                 <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); visibility: hidden;">
+                 </div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+                   <div class="simplebar-scrollbar" style="height: 365px; transform: translate3d(0px, 0px, 0px); visibility: visible;">
+                   </div></div></div>
+
+
+           </div>
+
+       </div>

@@ -1,0 +1,44 @@
+<% @empresa.build_assuntos %>
+<div class="main_content_inner">
+    <div class="section-small">
+      <div class="card">
+        <div class="card-header">
+<h4 class="card-title">Solicitar o cadastro de empresa!</h4>
+        </div>
+      <div class="card-body">
+        <div class="basic-form">
+
+        <br>
+  <div class="row ">
+    <br>
+    <div class="col-xl-3 col-lg-5">
+
+          <h4 class="card-title">Informações da empresa</h4>
+
+<%= form_for @empresa,:url => {:action => :new}  do |f| %>
+
+      <br>
+      <div class="col-xl-3 col-lg-5">
+            <h4 class="card-title">Serviços da empresa</h4>
+                <%= f.fields_for :assuntos do |form| %>
+<div class="form-group">
+<%= form.label :Nome,  class:'uk-form-label'%>
+<%= form.text_field :nome, autofocus: true, placeholder: "Nome da rua", class:'uk-input', style:'background-color: #def0f8;' %>
+</div>
+                <% end %>
+
+        </div>
+        <br>
+    </div>
+
+  <div class="text-right">
+  <%=f.submit 'Criar', class:'btn badge-success'%>
+  </div>
+  </div>
+
+  </div>
+
+</div>
+<% end %>
+    </div>
+  </div>

@@ -1,0 +1,27 @@
+
+    <div class="container-scroller" >
+                  <div class="main-panel">
+                    <div class="row">
+                          <%@queixas.each do |q|%>
+                          <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                            <div class="card-body" style="padding-bottom: 0px;">
+                  <h4 class="card-title"><%= q.assunto.nome %> | <%= q.titulo%></h4>
+          <p class="card-description"> <%= q.user.nome%> está  <label class="mr-2 badge badge-danger" style="margin-left: 7px;"><%=q.sentimento.nome%></label>
+          <p style="margin-left: 7px;"><%= q.descricao%> </p>
+          <%if q.replica.nil?%>
+          <p class="card-description mr-2" style="margin-left: 7px;"><%= link_to "Responder", edit_fornecedor_empresa_queixa_path(q)%> |
+          <%else%>
+          <blockquote class="blockquote blockquote-primary">
+          <p style="margin-left: 20px;"> Replica:  <%= q.replica%></p>
+          </blockquote>
+          <%end%>
+        </div>
+      <label class="mr-2 card-description"><a style="margin-left: 8px; class="pt-1px d-none d-md-block" href="<%=root_path%>">Voltar</a></label>
+            </div>
+            </div>
+            <%end%>
+
+      </div>
+      </div>
+</div>

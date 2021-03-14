@@ -1,0 +1,144 @@
+new_user_session_path	GET	/usuarios/login(.:format)	
+devise/sessions#new
+
+user_session_path	POST	/usuarios/login(.:format)	
+devise/sessions#create
+
+destroy_user_session_path	DELETE	/usuarios/logout(.:format)	
+devise/sessions#destroy
+
+new_user_password_path	GET	/usuarios/secret/new(.:format)	
+devise/passwords#new
+
+edit_user_password_path	GET	/usuarios/secret/edit(.:format)	
+devise/passwords#edit
+
+user_password_path	PATCH	/usuarios/secret(.:format)	
+devise/passwords#update
+
+PUT	/usuarios/secret(.:format)	
+devise/passwords#update
+
+POST	/usuarios/secret(.:format)	
+devise/passwords#create
+
+cancel_user_registration_path	GET	/usuarios/register/cancel(.:format)	
+devise/registrations#cancel
+
+new_user_registration_path	GET	/usuarios/register/cmon_let_me_in(.:format)	
+devise/registrations#new
+
+edit_user_registration_path	GET	/usuarios/register/edit(.:format)	
+devise/registrations#edit
+
+user_registration_path	PATCH	/usuarios/register(.:format)	
+devise/registrations#update
+
+PUT	/usuarios/register(.:format)	
+devise/registrations#update
+
+DELETE	/usuarios/register(.:format)	
+devise/registrations#destroy
+
+POST	/usuarios/register(.:format)	
+devise/registrations#create
+
+rails_admin_path		/Priv	
+RailsAdmin::Engine
+
+root_path	GET	/	
+home#index
+
+complains_path	GET	/complains(.:format)	
+complains#index
+
+POST	/complains(.:format)	
+complains#create
+
+new_complain_path	GET	/complains/new(.:format)	
+complains#new
+
+edit_complain_path	GET	/complains/:id/edit(.:format)	
+complains#edit
+
+complain_path	GET	/complains/:id(.:format)	
+complains#show
+
+PATCH	/complains/:id(.:format)	
+complains#update
+
+PUT	/complains/:id(.:format)	
+complains#update
+
+DELETE	/complains/:id(.:format)	
+complains#destroy
+
+user_sessions_path	GET	/user_sessions(.:format)	
+user_sessions#index
+
+POST	/user_sessions(.:format)	
+user_sessions#create
+
+GET	/user_sessions/new(.:format)	
+user_sessions#new
+
+edit_user_session_path	GET	/user_sessions/:id/edit(.:format)	
+user_sessions#edit
+
+GET	/user_sessions/:id(.:format)	
+user_sessions#show
+
+PATCH	/user_sessions/:id(.:format)	
+user_sessions#update
+
+PUT	/user_sessions/:id(.:format)	
+user_sessions#update
+
+DELETE	/user_sessions/:id(.:format)	
+user_sessions#destroy
+
+rails_service_blob_path	GET	/rails/active_storage/blobs/:signed_id/*filename(.:format)	
+active_storage/blobs#show
+
+rails_blob_representation_path	GET	/rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format)	
+active_storage/representations#show
+
+rails_disk_service_path	GET	/rails/active_storage/disk/:encoded_key/*filename(.:format)	
+active_storage/disk#show
+
+update_rails_disk_service_path	PUT	/rails/active_storage/disk/:encoded_token(.:format)	
+active_storage/disk#update
+
+rails_direct_uploads_path	POST	/rails/active_storage/direct_uploads(.:format)	
+active_storage/direct_uploads#create
+
+Routes for RailsAdmin::Engine
+dashboard_path	GET	/	
+rails_admin/main#dashboard
+
+index_path	GET|POST	/:model_name(.:format)	
+rails_admin/main#index
+
+new_path	GET|POST	/:model_name/new(.:format)	
+rails_admin/main#new
+
+export_path	GET|POST	/:model_name/export(.:format)	
+rails_admin/main#export
+
+bulk_delete_path	POST|DELETE	/:model_name/bulk_delete(.:format)	
+rails_admin/main#bulk_delete
+
+bulk_action_path	POST	/:model_name/bulk_action(.:format)	
+rails_admin/main#bulk_action
+
+show_path	GET	/:model_name/:id(.:format)	
+rails_admin/main#show
+
+edit_path	GET|PUT	/:model_name/:id/edit(.:format)	
+rails_admin/main#edit
+
+delete_path	GET|DELETE	/:model_name/:id/delete(.:format)	
+rails_admin/main#delete
+
+show_in_app_path	GET	/:model_name/:id/show_in_app(.:format)	
+rails_admin/main#show_in_app

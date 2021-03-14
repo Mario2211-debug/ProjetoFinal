@@ -1,0 +1,16 @@
+<li id="micropost-<%= @empresa.id %>">
+  <span class="user"><%= @empresa.nome%></span>
+  <span class="content"><%= @empresa.email %></span>
+  <span class="content"><%= @empresa.responsavel %></span>
+  <span class="content"><%= @empresa.atividade.nome%></span>
+  <span class="content"><%= @empresa.nif%></span>
+
+
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(@empresa.created_at) %> ago.
+    <% if current_user?(@empresa.user) %>
+      <%= link_to "delete", @empresa, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

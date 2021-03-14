@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ReclameAi</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+     <%= stylesheet_link_tag 'consumidor/consumidor', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag 'consumidor/consumidor', 'data-turbolinks-track': 'reload' %>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  </head>
+  <body>
+      <div class="main_content">
+          <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, id: "flash_#{name}" %>
+          <% end %>
+          <%= yield %>
+      </div>
+          <%= render 'layouts/footer' %>
+  </body>
+</html>
+<%= debug(params) if Rails.env.development? %>

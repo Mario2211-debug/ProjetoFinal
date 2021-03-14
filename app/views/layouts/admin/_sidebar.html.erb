@@ -1,0 +1,146 @@
+
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+          <a class="sidebar-brand brand-logo" href="<%=admin_index_path%>">
+            <img src=""></a>
+          <a class="sidebar-brand brand-logo-mini" href="<%=admin_index_path%>">
+            <img src=""></a>
+        </div>
+        <ul class="nav">
+          <li class="nav-item profile">
+            <div class="profile-desc">
+              <div class="profile-pic">
+                <div class="count-indicator">
+                  <%=image_tag current_admin.displayed_image, loading: "lazy", alt:current_admin.nome, class:"img-xs rounded-circle", width:"150"%>
+                  <span class="count bg-success"></span>
+                </div>
+                <div class="profile-name">
+                  <h5 class="mb-0 font-weight-normal"><%=current_admin.nome%></h5>
+                  <span>Adminisatrador</span>
+                </div>
+              </div>
+              <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
+                
+                <%=link_to '
+                  <div class="preview-thumbnail">
+                       <div class="preview-icon bg-dark rounded-circle">
+                         <i class="mdi mdi-settings text-primary"></i>
+                    </div>
+                  </div>
+
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">Definições da conta</p>
+                  </div>'.html_safe, edit_admin_path(current_admin), class:'dropdown-item preview-item'%>
+
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-onepassword  text-info"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">Alterar a palavra </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-calendar-today text-success"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item nav-category">
+            <span class="nav-link">Menu</span>
+          </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="<%= admin_index_path%>">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+              <span class="menu-title">Painel de controle</span>
+            </a>
+          </li>
+
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+              <span class="menu-title">Complementos</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" <%=link_to 'Atividades', admin_atividades_path(current_admin)%></li>
+                <li class="nav-item"> <a class="nav-link" <%=link_to 'Assuntos', admin_assuntos_path(current_admin)%></li>
+                <li class="nav-item"> <a class="nav-link" <%=link_to 'Avaliacões', admin_avaliacaos_path(current_admin)%></li>
+                  <li class="nav-item"> <a class="nav-link" <%=link_to 'Situacao', admin_situacaos_path(current_admin)%></li>
+                    <li class="nav-item"> <a class="nav-link" <%=link_to 'Sentimentos', admin_sentimentos_path(current_admin)%></li>
+
+
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-alert-outline"></i>
+              </span>
+              <span class="menu-title">Solicitações</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic1">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" <%=link_to 'Solicitações de perfil', admin_perfil_empresarials_path(current_admin)%></li>
+                <li class="nav-item"> <a class="nav-link" <%=link_to 'Para adicionar empresas', admin_solicitacoes_path(current_admin)%></li>
+              </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="<%=admin_empresas_path(current_admin.id)%>">
+              <span class="menu-icon">
+                <i class="mdi mdi-store"></i>
+              </span>
+              <span class="menu-title">Empresas</span>
+            </a>
+          </li>
+
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="<%=admin_queixas_path(current_admin.id)%>">
+              <span class="menu-icon">
+                <i class="mdi mdi-comment-remove-outline text-danger"></i>
+              </span>
+              <span class="menu-title">Queixas</span>
+            </a>
+          </li>
+
+
+          <li class="nav-item menu-items">
+            <a class="nav-link"href="<%=admin_users_path(current_admin.id)%>">
+              <span class="menu-icon">
+                <i class="mdi mdi-contacts"></i>
+              </span>
+              <span class="menu-title">Usuarios</span>
+            </a>
+          </li>
+
+
+
+        </ul>
+      </nav>

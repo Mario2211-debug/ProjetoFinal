@@ -1,0 +1,41 @@
+
+<div class="content-wrapper">
+<div class="row">
+<div class="col-lg-10 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Tabela de pedidos</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+														<th>Nome do suarioempresa</th>
+														<th>Nome da empresa</th>
+														<th>Data do pedido</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><%= @perfil_empp.user.nome%> </td>
+                            <td><%= @perfil_empp.empresa.nome%> </td>
+														<td><%= @perfil_empp.created_at%> </td>
+
+														<td>
+					<%= link_to "Apagar", @perfil_empps, method: :delete, data: { confirm: "You sure?" } %>
+        </td>
+        <td>
+          <%= button_to 'Aceitar', aceitar_admin_perfil_empresarial_path(current_admin, a), method: :post, class:'button primary'%>
+        </td>
+        <td>
+          <%= button_to 'Recusar', recusar_admin_perfil_empresarial_path(current_admin, a), method: :post, class:'button primary'%>
+        </td>
+                          </tr>
+											  </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+						</div>
+					</div>

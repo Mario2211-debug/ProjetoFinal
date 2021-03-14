@@ -1,0 +1,104 @@
+
+<div class="main_content_inner">
+    <div class="section-small">
+      <div class="card">
+        <div class="card-header">
+<h4 class="card-title">Solicitar o cadastro de empresa!</h4>
+        </div>
+      <div class="card-body">
+        <div class="basic-form">
+
+        <br>
+  <div class="row ">
+    <br>
+    <div class="col-xl-3 col-lg-5">
+
+          <h4 class="card-title">Informações da empresa</h4>
+
+<%=form_for(@empresa) do |f| %>
+
+                <div class="form-group">
+                <%= f.label :Nome,  class:'uk-form-label'%>
+                <%= f.text_field :nome, autofocus: true, placeholder:  "Nome da empresa", class:'uk-input', style:'background-color: #def0f8;' %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :Ramo_de_atividade,  class:'uk-form-label'%>
+                  <%= f.collection_select(:atividade_id, Atividade.order(:id), :id, :nome, {:prompt=> 'Selecione' },  {:class=>'uk-select fa fa-search', :style => 'background-color: #def0f8;'} ) %>
+                </div>
+
+                <div class="form-group">
+                <%= f.label :Responsável_da_empresa,  class:'uk-form-label'%>
+                <%= f.text_field :responsavel, autofocus: true, placeholder: "Responsável da empresa", class:'uk-input', style:'background-color: #def0f8;' %>
+                </div>
+
+                <div class="form-group">
+                <%= f.label :Email_da_empresa,  class:'uk-form-label'%>
+                <%= f.text_field :email, autofocus: true, placeholder: "E-mail da empresa", class:'uk-input', style:'background-color: #def0f8;' %>
+                </div>
+
+      </div>
+      <br>
+      <div class="col-xl-3 col-lg-5">
+
+            <h4 class="card-title">Endereço da empresa</h4>
+
+                <%= f.fields_for :endereco do |form| %>
+<div class="form-group">
+<%= form.label :Cidade_ou_Província,  class:'uk-form-label'%>
+<%= form.select(:cidade, Endereco.cidades.keys, {:prompt => "Escolhe"},  {:class=>'uk-select fa fa-search', :style => 'background-color: #def0f8;'})%>
+</div>
+
+<div class="form-group">
+<%= form.label :Destrito, class:'uk-form-label'%>
+<%= form.select(:destrito, Endereco.destritos.keys, {:prompt => "Escolhe"}, {:class=>'uk-select fa fa-search', :style => 'background-color: #def0f8;'})%>
+</div>
+
+                <div class="form-group">
+                <%= form.label :Rua,  class:'uk-form-label'%>
+                <%= form.text_field :rua, autofocus: true, placeholder: "Nome da rua", class:'uk-input', style:'background-color: #def0f8;' %>
+              </div>
+
+                <div class="form-group">
+                <%= form.label :Bairro,  class:'uk-form-label'%>
+                <%= form.text_field :bairro, autofocus: true, placeholder:  "E-mail", class:'uk-input', style:'background-color: #def0f8;'%>
+              </div>
+
+                <div class="form-group">
+                <%= form.label :Numero_da_casa,  class:'uk-form-label'%>
+                <%= form.text_field :numero, autofocus: true, placeholder:  "Número da casa", class:'uk-input', style:'background-color: #def0f8;' %>
+              </div>
+
+                <% end %>
+
+        </div>
+        <br>
+      <div class="col-xl-3 col-lg-5">
+              <h4 class="card-title">Contactos da empresa</h4>
+
+                  <%= f.fields_for :contacto do |form| %>
+                  <div class="form-group">
+                  <%= form.label :Tipo_de_contacto,  class:'uk-form-label'%>
+                  <%= form.text_field :tipo, autofocus: true, placeholder: "Tipo de contacto",class:'uk-input', style:'background-color: #def0f8;'%>
+                </div>
+
+                  <div class="form-group">
+                  <%= form.label :Valor,  class:'uk-form-label'%>
+                  <%= form.text_field :valor, autofocus: true, placeholder:  "Valor", class:'uk-input', style:'background-color: #def0f8;' %>
+                  </div>
+                  <% end %>
+          </div>
+
+    </div>
+
+                                <div class="text-right">
+                                  <%=f.submit 'Editar', class:'btn badge-success'%>
+                                  </div>
+  </div>
+
+  </div>
+
+</div>
+<% end %>
+    </div>
+  </div>

@@ -1,0 +1,32 @@
+<% provide(:title, "Log in") %>
+
+     <div class="login-clean">
+            <form method="post" style="height: 490px;width: 375px;padding-top: 27px;padding-right: 20px;padding-left: 21px;max-width: 400px;padding-bottom: 38px;">
+              <%= form_for(:session, url: alogin_path) do |f| %>
+
+                <div class="form-row">
+                    <div class="col"><span style="font-size: 22px;"><strong>Etrar</strong></span></div>
+                </div>
+                <div class="illustration" style="height: 74px;width: 236px;margin: 6px;margin-top: -16px;margin-right: 0px;margin-left: 12px;margin-bottom: 1px;padding: 0px;padding-top: 0px;padding-bottom: 0px;padding-left: 19px;padding-right: 0px;"><button class="btn btn-primary btn-block" type="submit" style="margin-top: 34px;margin-bottom: -46px;background-color: rgb(62,140,228);margin-left: -31px;width: 271px;">Entrar com o Facebook<i class="fa fa-facebook-official float-left" style="margin: 4px;"></i></button>
+                    <button
+                        class="btn btn-primary btn-block" type="submit" style="margin-right: 0px;margin-top: 0px;background-color: rgb(62,140,228);width: 47px;margin-left: 251px;"><i class="fa fa-google"></i></button>
+                </div>
+
+                <label class="mb-0" for="float-textarea" style="margin-top: 10px;">Email</label>
+                <div class="form-group">
+                  <%= f.email_field :email, placeholder:'Digite o seu email', class: 'border rounded border-white form-control', style:'background-color: #def0f8;' %>
+                </div>
+
+                  <label class="mb-0" for="float-textarea" style="margin-top: 10px;">Palavra-passe</label>
+                <div class="form-group">
+                  <%= f.password_field :password, placeholder:'Digite a palavra-passe', class: 'border rounded border-white form-control', style:'background-color: #def0f8;' %>
+                </div>
+
+
+                <%= f.submit "Entrar", class: 'btn btn-primary btn-block', style:'width: 150px;background-color: rgb(62,140,228);height: 48px;margin-left: 85px;' %>
+                <a class="forgot" href="<%= signup_path %>" style="padding-right: 0px;padding-bottom: 0px;padding-top: 32px;margin-right: 5px;">Não tem uma conta? Cadastre-se agora</a>
+
+                <% end %>
+
+            </form>
+        </div>

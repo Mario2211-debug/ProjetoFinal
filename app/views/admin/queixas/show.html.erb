@@ -1,0 +1,60 @@
+<div class="row">
+              <div class="col-lg-12">
+                <div class="card px-2">
+                  <div class="card-body">
+                    <div class="container-fluid">
+                      <h3 class="text-right my-5">Queixa&nbsp;&nbsp;#ID-<%=@queixa.id %></h3>
+                    </div>
+                    <div class="container-fluid d-flex justify-content-between">
+                      <div class="col-lg-3 pl-0">
+                        <p class="mt-5 mb-2"><b><%=@queixa.user.nome %></b></p>
+                        <p> <%=@queixa.user.endereco.numero %>, <br><%=@queixa.user.endereco.bairro %>,<br> <%=@queixa.user.endereco.cidade %>, <%=@queixa.user.endereco.rua %>, <br>(+244) <%=@queixa.user.contacto.valor %>.</p>
+
+                        <p class="mt-5 mb-2"><b>para, <%=@queixa.empresa.nome%></b></p>
+                        <p> <%=@queixa.empresa.endereco.numero %>, <br><%=@queixa.empresa.endereco.bairro %>,<br> <%=@queixa.empresa.endereco.cidade %>, <%=@queixa.empresa.endereco.rua %>, <br> (+244) <%=@queixa.empresa.contacto.valor %>.</p>
+                      </div>
+                  <div class="col-lg-7 grid-margin pr-0">
+                  <h5 style="margin-bottom:0px; margin-top:20px;">Descrição</h5>
+                  <%= @queixa.descricao%>
+                  <h5 style="margin-bottom:0px; margin-top:20px;">Réplica do vendedor</h5>
+                  <div class="alert alert-danger alert-dismissible fade show">
+                    <%if @queixa.replica.nil?%>
+
+                    <%else%>
+                    <%= @queixa.replica%>
+                    <%end%>
+                  </div>
+                  <%if @queixa.replica.nil?%>
+                  <% else %>
+                  <h5 style="margin-bottom:0px; margin-top:20px;">Mensagem de avaliação</h5>
+                  <div class="alert alert-warning alert-dismissible fade show">
+                    <%if @queixa.mensagem.nil?%>
+                    <%else%>
+                    <%= @queixa.mensagem%>
+                    <%end%>
+                  </div>
+                  <% end %>
+                  </div>
+                </div>
+
+                    <div class="container-fluid d-flex justify-content-between">
+                      <div class="col-lg-3 pl-0">
+                        <p class="mb-0 mt-5 text-right">Data da reclamação: 23rd Jan 2016</p>
+                        <p class="text-right">Due Date : 25th Jan 2017</p>
+                      </div>
+
+                <div class="col-lg-3 pr-0">
+                <p class="mb-0 mt-5 text-right">Estado da reclamação</p>
+                <%if @queixa.situacao_id == 1%>
+                <h4 class="text-right">Resolvida</h4>
+                <%else%>
+                <h4 class="text-right">Não resolvida</h4>
+                <%end%>
+                  </div>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>

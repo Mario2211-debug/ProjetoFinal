@@ -1,0 +1,22 @@
+<%provide(:url, admin_empresas_path(@empresa))%>
+
+<div class="content-wrapper">
+<div class="row">
+  <div class="col-md-3 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4 class="card-title">Selecione o estado</h4>
+                      <div class="form-group">
+                        <%= form_for(@empresa, url: admin_empresa_path)   do  |f| %>
+                          <%= f.collection_select(:situacao_id, Situacao.where(escopo:'Empresa'), :id, :nome, {:prompt=> 'Selecione' }, {:class=>'form-control form-control-sm'} ) %>
+
+                      </div>
+            <%= f.submit "Salvar mudanças", class: "btn btn-success btn-fw" %>
+              <% end %>
+                      </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>

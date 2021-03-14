@@ -1,0 +1,36 @@
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Assunto</th>
+              <th>Data</th>
+              <th>Status</th>
+              <th>Responder</th>
+            </tr>
+          </thead>
+          <tbody>
+              <%@R.each do |q|%>
+            <tr>
+              <td><%= q.user.nome%></td>
+              <td><%= q.assunto.nome%></td>
+              <td><%= q.created_at.strftime("%d %B %Y")%></td>
+              <td><%if q.situacao_id == 1%>
+                  <div class="badge badge-outline-success">
+                    Resolvida
+                    </div>
+                    <%else%>
+              <div class="badge badge-outline-danger">
+                      Não resolvida
+                    </div>
+                    <%end%>
+              </td>
+              <td style="text-align: center;">
+        <%=link_to '<i class="fa fa-pencil"></i>'.html_safe, fornecedor_empresa_queixa_path(current_user.id, current_user.empresa.id, q  ), class:"btn btn-primary shadow btn-xs sharp mr-1"%>
+          </td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+        <%= will_paginate @R%>

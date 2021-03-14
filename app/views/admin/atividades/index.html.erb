@@ -1,0 +1,43 @@
+<div class="content-wrapper">
+<div class="row">
+<div class="col-md-7 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Ramo de atividades</h4>
+                    <a class=" card-title badge badge-success"  href="	<%=new_admin_atividade_path(current_admin.id)%>"> Novo</a>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+														<th>Nome</th>
+                          </tr>
+                        </thead>
+												<%@atividades.each do |a|%>
+                        <tbody>
+                          <tr>
+                            <td><%= a.nome%> </td>
+                        		<td>
+																		<%=link_to 'Mostrar', action: 'show', id: a%>
+																	</td>
+
+														<td>
+															<%=link_to 'Editar', action: 'edit', id: a%>
+														</td>
+
+														<td>
+															<%=link_to 'Apagar', {action: 'destroy', id: a}, {method: "delete"} %>
+														</td>
+
+                          </tr>
+											  </tbody>
+											<%end%>
+
+                      </table>
+                    </div>
+                    <br>
+                    <%=will_paginate @atividades%>
+                  </div>
+                </div>
+              </div>
+						</div>
+					</div>

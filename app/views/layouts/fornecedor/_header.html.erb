@@ -1,0 +1,140 @@
+<!-- header -->
+<div id="main_header">
+<header>
+<div class="header-innr">
+
+   <!-- Logo-->
+   <div class="header-btn-traiger is-hidden" uk-toggle="target: #wrapper ; cls: collapse-sidebar mobile-visible">
+       <span></span></div>
+
+    <!-- Logo-->
+    <div id="logo">
+       <a href="feeds.html"> <img src="" alt=""></a>
+       <a href="feeds.html"> <img src="" class="logo-inverse" alt=""></a>
+   </div>
+
+   <!-- form search-->
+   <div class="head_search">
+           <%=form_tag(search_page_path, :method => "get") do %>
+           <div class="head_search_cont" aria-expanded="false">
+         <%=search_field_tag :search, params[:search], placeholder:'Procure por empresas , assuntos e mais', autocomplete:false%>
+               <i class="s_icon uil-search-alt"></i>
+           </div>
+           <%end%>
+   </div>
+
+
+   <!-- user icons -->
+   <div class="head_user">
+
+
+       <!-- notificiation icon  -->
+       <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7" title="" aria-expanded="false">
+           <%=image_tag 'icons/bell.svg'%>
+<span>  <%=Notification.unread_count(current_user)%></span>
+       </a>
+
+
+       <!-- notificiation dropdown -->
+       <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small" class="dropdown-notifications display-hidden uk-dropdown">
+
+           <!-- notification contents -->
+           <div class="dropdown-notifications-content" data-simplebar="init"><div class="simplebar-wrapper" style="margin: 0px;">
+             <div class="simplebar-height-auto-observer-wrapper">
+             <div class="simplebar-height-auto-observer"></div></div>
+             <div class="simplebar-mask">
+               <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+               <div class="simplebar-content" style="padding: 0px; height: auto; overflow: hidden;">
+
+               <!-- notivication header -->
+               <div class="dropdown-notifications-headline">
+                   <h4>Notifications </h4>
+                   <a href="#">
+                       <i class="icon-feather-settings" uk-tooltip="title: Notifications settings ; pos: left" title="" aria-expanded="false"></i>
+                   </a>
+               </div>
+
+               <!-- notiviation list -->
+               <ul>
+                   <li>
+                       <a href="#">
+                           <span class="notification-avatar">
+                             <%=image_tag 'bg-form1.jpg'%>
+                           </span>
+                           <span class="notification-icon bg-gradient-primary">
+                               <i class="icon-feather-thumbs-up"></i></span>
+                           <span class="notification-text">
+                               <strong>Adrian Moh.</strong> Like Your Comment On Video
+                               <span class="text-primary">Learn Prototype Faster</span>
+                               <br> <span class="time-ago"> 9 hours ago </span>
+                           </span>
+                       </a>
+                   </li>
+
+               </ul>
+
+           </div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div>
+           <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+             <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); visibility: hidden;"></div></div>
+             <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+               <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); visibility: hidden;"></div></div></div>
+
+
+       </div>
+
+
+       <!-- profile -image -->
+       <a class="opts_account" href="#" aria-expanded="false">  <%=image_tag 'bg-form1.jpg'%>
+</a>
+
+       <!-- profile dropdown-->
+       <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small" class="dropdown-notifications rounded display-hidden uk-dropdown">
+
+           <!-- User Name / Avatar -->
+           <!-- User Name / Avatar -->
+           <a href="timeline.html">
+
+               <div class="dropdown-user-details">
+
+                   <div class="dropdown-user-cover">
+                       <%=image_tag 'bg-form1.jpg'%>
+
+                   </div>
+
+                   <div class="dropdown-user-avatar">
+                       <%=image_tag current_user.displayed_image, loading: "lazy", alt:current_user.nome%>
+                   </div>
+                   <br>
+                   <br>
+                   <br>
+
+                   <div class="dropdown-user-name"> <%=current_user.nome%></div>
+               </div>
+
+           </a>
+
+           <ul class="dropdown-user-menu">
+               <li><%=link_to '<i class="fa fa-user" style="color: royalblue;"></i>Perfil de usuário'.html_safe, consumidor_index_path(current_user.id)%></li>
+               <li><%=link_to '<i class="fa fa-fire" style="color: #f72b50;"></i>Editar perfil empresarial'.html_safe, edit_fornecedor_empresa_path(current_user.id, current_user.empresa_id)%></li>
+               <li><%=link_to '<i class="fa fa-fire" style="color: #f72b50;"></i>Serviços da empresa'.html_safe, fornecedor_assuntos_path(current_user.id, current_user.empresa_id)%></li>
+               <li><%=link_to '<i class="fa fa-heart" style="color: #4527a0;"></i>Respondidas'.html_safe, consumidor_index_path(current_user.id)%></li>
+               <li>
+                   <a href="#" id="night-mode" class="btn-night-mode">
+                       <i class="fa fa-moon-o" style="color: #4527a0;"></i> Night mode
+                       <span class="btn-night-mode-switch">
+                           <span class="uk-switch-button"></span>
+                       </span>
+                   </a>
+               </li>
+
+               <li><%= link_to '<i class="fa fa-sign-out text-danger"></i>Sair'.html_safe, logout_path, method: "delete" %></li>
+           </ul>
+       </div>
+
+
+   </div>
+
+</div> <!-- / heaader-innr -->
+</header>
+
+</div>

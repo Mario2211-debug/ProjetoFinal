@@ -1,0 +1,123 @@
+<div class="content-wrapper">
+<div class="row">
+  <div class="col-md-4 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row">
+                      <%=image_tag @empresa.displayed_image, loading: "lazy", alt:@empresa.nome, class:"img-lg rounded"%>
+                      <div class="ml-3">
+                        <h6><%=@empresa.nome%></h6>
+                        <p class="text-muted"><%=@empresa.email%></p>
+                        <p class="mt-2 text-success font-weight-bold"><%=@empresa.atividade.nome%></p>
+                      </div>
+                    </div>
+                    <br>
+                <address>
+                  <p class="font-weight-bold">Tipo de contacto:</p>
+                  <p><%= @empresa.contacto.tipo%></p>
+                  <br>
+
+                  <p class="font-weight-bold">Contacto:</p>
+                  <p><%= @empresa.contacto.valor%></p>
+                </address>
+<%=link_to '<span class=" card-title badge badge-success">Editar</span>'.html_safe, action: 'edit', id: @empresa%>
+                      <br>
+<%=link_to '<span class=" card-title badge badge-success">Apagar</span>'.html_safe, {action: 'destroy', id: @empresa}, {method: "delete"} %>
+                  </div>
+                </div>
+  </div>
+
+  <div class="col-lg-4 grid-margin stretch-card">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <h4 class="card-title">Endereço</h4>
+<address>
+  <p class="font-weight-bold">Cidade:</p>
+  <p><%= @empresa.endereco.cidade%></p>
+  <br>
+
+  <p class="font-weight-bold">Destrito ou municipio:</p>
+  <p><%= @empresa.endereco.destrito%></p>
+  <br>
+
+  <p class="font-weight-bold">Bairro:</p>
+  <p><%= @empresa.endereco.bairro%></p>
+  <br>
+
+  <p class="font-weight-bold">Rua:</p>
+  <p><%= @empresa.endereco.rua%></p>
+  <br>
+
+  <p class="font-weight-bold">Numero da residência:</p>
+  <p><%= @empresa.endereco.numero%></p>
+</address>
+
+  </div>
+  </div>
+  </div>
+
+ <div class="col-lg-4 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+    <h4 class="card-title">Contactos</h4>
+<address>
+  <p class="font-weight-bold">Tipo de contacto:</p>
+  <p><%= @empresa.contacto.tipo%></p>
+  <br>
+
+  <p class="font-weight-bold">Contacto:</p>
+  <p><%= @empresa.contacto.valor%></p>
+</address>
+        </div>
+          </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                          <div class="card-body">
+                            <h4 class="card-title">Reputação da empresa</h4>
+                            <div class="row">
+                                <div class="col-12 mt-4">
+                                <div class="d-flex justify-content-between">
+                                  <h6>Respostas</h6>
+                                <span><%=number_to_percentage(@empresa.indiceR,  precision: 0)%></span>
+                                  </div>
+                                  <div class="progress">
+                            <div class="progress-bar bg-primary" style="width: <%=number_to_percentage(@empresa.indiceR)%>"></div>
+                              </div>
+                              </div>
+                                  <div class="col-12 mt-4">
+                                <div class="d-flex justify-content-between">
+                                  <h6>Soluções</h6>
+                                      <span><%=number_to_percentage(@empresa.indiceS,  precision: 0)%></span>
+                                </div>
+                                    <div class="progress">
+                            <div class="progress-bar bg-success" style="width:<%=number_to_percentage(@empresa.indiceS)%>"></div>
+                                        </div>
+                                </div>
+                                      <div class="col-12 mt-4">
+                            <div class="d-flex justify-content-between">
+                              <h6>Sem respostas</h6>
+                              <span><%=number_to_percentage(@empresa.indiceSR, precision: 0)%></span>
+                                          </div>
+                                  <div class="progress">
+                            <div class="progress-bar bg-info" style="width:<%=number_to_percentage(@empresa.indiceSR)%>"></div>
+                                  </div>
+                                </div>
+                                    <div class="col-12 mt-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6>Novos Negócios</h6>
+                                          <span><%=number_to_percentage(@empresa.indiceNN, precision: 0)%></span>
+                              </div>
+                                  <div class="progress">
+                              <div class="progress-bar bg-warning" style="width: <%=number_to_percentage(@empresa.indiceNN)%>"></div>
+                                  </div>
+                                </div>
+                                </div>
+                          </div>
+                        </div>
+                      </div>
+
+      </div>

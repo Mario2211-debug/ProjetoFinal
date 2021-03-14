@@ -1,0 +1,31 @@
+<% provide(:title, "Empresas") %>
+<h1>Reclamações</h1>
+<table>
+	<tr>
+
+<ul>
+
+<th>Nome do Usuario</th>
+<th>Nome da Empresa</th>
+	</tr>
+<%= @perfil.each do |emp|%>
+			<tr>
+				<td><%= emp.user.nome%> </td>
+					<td><%= emp.empresa.nome%></td>
+
+												<td>
+											<%=link_to 'Mostrar', action: 'show', id: emp%>
+										</td>
+
+
+					<td>
+						<%=link_to 'Apagar', {action: 'destroy', id: emp}, {method: "delete"} %>
+					</td>
+			</tr>
+			<%end%>
+</table>
+
+<p>
+    <%= render 'layouts/footer' %>
+</p>
+<%= link_to "Back", root_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  empresa: one
+  situacao: one
+  admin: one
+
+two:
+  empresa: two
+  situacao: two
+  admin: two

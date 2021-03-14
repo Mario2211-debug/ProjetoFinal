@@ -1,0 +1,8 @@
+{
+  "name": "ProjetoFinal",
+  "private": true,
+  "dependencies": {
+    "action_cable": "^5.0.0-beta3",
+    "actioncable": "^5.2.4-5"
+  }
+}

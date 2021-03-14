@@ -1,0 +1,15 @@
+<h1> Perfil Empresarial</h1>
+
+
+
+<% if current_user %>
+
+
+  <p>Nome: <%= @empresa.user.name%></p>
+  <p>Nome: <%= @empresa.empresa.nome%></p>
+
+
+  <p>Queixas: <%= @queixa.titulo%></p>
+<%end%>
+
+<%= link_to "Back", root_path %>

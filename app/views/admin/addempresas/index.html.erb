@@ -1,0 +1,66 @@
+<div class="content-wrapper">
+<div class="row">
+<div class="col-lg-10 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Tabela de pedidos</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+														<th>Usuario</th>
+														<th>Nome da empresa</th>
+														<th>Email da empresa</th>
+														<th>Data do pedido</th>
+														<th>Estado do pedido</th>
+
+                          </tr>
+                        </thead>
+												<%@add_empresas.each do |a| %>
+                        <tbody>
+                          <tr>
+                            <td><%= a.user.nome%> </td>
+                            <td><%= a.nome%> </td>
+                            <td><%= a.email%> </td>
+														<td><%= a.created_at.strftime("%d %B %Y")%> </td>
+                            <td><%if (a.situacao_id == 1)%>
+															<label class="badge badge-success">
+																Aprovado
+															</label>
+															<%elsif (a.situacao.id == 3)%>
+															<label class="badge badge-warning">
+																Em analise
+															</label>
+															<%else%>
+															<label class="badge badge-danger">
+																Não analisado
+															</label>
+															<%end%>
+
+														</td>
+
+
+																	<td>
+																		<%=link_to 'Mostrar', action: 'show', id: a%>
+																	</td>
+
+														<td>
+															<%=link_to 'Editar', action: 'edit', id: a%>
+														</td>
+
+														<td>
+															<%=link_to 'Apagar', {action: 'destroy', id: a}, {method: "delete"} %>
+														</td>
+
+                          </tr>
+											  </tbody>
+                        <%end%>
+
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+						</div>
+					</div>

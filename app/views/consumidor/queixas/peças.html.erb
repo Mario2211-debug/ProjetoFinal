@@ -1,0 +1,7 @@
+<%if @queixa.situacao_id == 1 && @queixa.novos_negocios.nil?%>
+<%= button_to 'Sim', novos_negociosS_consumidor_queixa_path(current_user.id, @queixa.id), method: :post, class:'btn btn-primary'%>
+<%= button_to 'Não', novos_negociosN_consumidor_queixa_path(current_user.id, @queixa.id), method: :post, class:'btn btn-primary'%>
+<%elsif @queixa.situacao_id != 1 && @queixa.replica.nil?%>
+<%else%>
+<p style="margin-left: 20px;"> A resposta já foi avaliada e acusada</p>
+<%end%>

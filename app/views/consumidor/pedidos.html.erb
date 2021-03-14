@@ -1,0 +1,101 @@
+
+       <!-- contents -->
+
+
+            <div class="main_content_inner">
+
+                <div id="spinneroverlay"> </div>
+
+
+                <div class="profile">
+
+                  <div class="uk-width-2-3@m fead-area uk-first-column">
+
+                                      </div>
+
+                </div>
+
+
+                <div class="section-small">
+
+                    <div uk-grid="" class="uk-grid">
+
+                        <div class="uk-width-2-3@m fead-area uk-first-column">
+                          <p style="font-size: x-large;font-family: system-ui;color: white;">Sujestão de empresas</p>
+
+
+                              <div class="grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-body">
+                        <h4 class="card-title">Minhas solicitações</h4>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Perfil empresarial</th>
+                                <th>Adicionar empresa</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                                <% @perfil.each do |q|%>
+                              <tr>
+                                <td><%= q.empresa.nome%></td>
+                                <td><%= q.created_at%></td>
+                                <td><%if q.situacao_id == 1%>
+                                    <div class="badge badge-outline-success">
+                                      Resolvida
+                                      </div>
+                                      <%else%>
+                                <div class="badge badge-outline-danger">
+                                        Não resolvida
+                                      </div>
+                                      <%end%>
+                                </td>
+                                <td>
+                                  <%=link_to 'Ver', consumidor_queixa_path(current_user.id,q.id)%>
+                                </td>
+                              </tr>
+                              <%end%>
+
+                              <% @empresarial.each do |q|%>
+                            <tr>
+                              <td><%= q.empresa.nome%></td>
+                              <td><%= q.created_at%></td>
+
+                              <td><%if q.situacao_id == 1%>
+                                  <div class="badge badge-outline-success">
+                                    Resolvida
+                                    </div>
+                                    <%else%>
+                              <div class="badge badge-outline-danger">
+                                      Não resolvida
+                                    </div>
+                                    <%end%>
+                              </td>
+                              <td>
+                                <%=link_to 'Ver', consumidor_queixa_path(current_user.id,q.id)%>
+                              </td>
+                            </tr>
+                            <%end%>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>

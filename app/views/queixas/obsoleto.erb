@@ -1,0 +1,31 @@
+
+                              <div class="grid-margin stretch-card" id="<%=dom_id queixa%>">
+                                <div class="card">
+                                <div class="card-body">
+                      <h4 class="card-title"><%= queixa.assunto %></h4>
+              <p class="card-description">
+                        <p style="margin-left: 7px;">
+                          <%=link_to queixa.descricao, queixa.empresa, style:'color: black;'%> </p>
+              <%if queixa.updated_at<24.hours.ago && queixa.replica.nil?%>
+              <label class="mr-2 badge badge-danger">
+    <i class="fa fa-thumbs-down text-danger" style="margin-left:0px;"></i>  Sem resposta
+                    </label> |  <small> <%= time_ago_in_words(queixa.created_at) %></small>
+
+
+              <%elsif queixa.updated_at>24.hours.ago && queixa.replica.nil?%>
+              <label class="mr-2 badge badge-warning">
+  <i class="fa fa-warning" style="margin-left: -5px;"></i>  Aguardando resposta
+            </label> |  <small> <%= time_ago_in_words(queixa.created_at) %></small>
+
+<%else%>
+              <blockquote class="blockquote blockquote-primary">
+              <p style="margin-left: 20px;"> Replica:  <%= queixa.replica%></p>
+              </blockquote>
+              <label class="mr-2 badge badge-success">
+                <i class="fa fa-thumbs-up" style="margin-left: 0px;"></i>  Respondida
+            </label> |  <small> <%= time_ago_in_words(queixa.updated_at) %></small>
+              <%end%>
+                <a style="margin-left: 8px; class="pt-1px d-none d-md-block" href="<%= empresa_path(queixa.empresa_id)%>">ver</a>
+            </div>
+                </div>
+                </div>

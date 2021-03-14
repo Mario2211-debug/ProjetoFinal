@@ -1,0 +1,14 @@
+                <%@ramo.each do |r|%>
+                <div class="uk-first-column">
+                      <div class="sl_events_list_info">
+                    <a href="#">
+                        <div class="group-catagroy-card" data-src="images/bg-form1.jpg" uk-img="">
+                            <div class="group-catagroy-card-content">
+                                <h4> <%=link_to r.nome, categoria_path(r)%></h4>
+                            </div>
+                        </div>
+                    </a>
+  </div>
+</div>
+
+<% end %>

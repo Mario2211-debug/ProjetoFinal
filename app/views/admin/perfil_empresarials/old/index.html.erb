@@ -1,0 +1,100 @@
+<div class="content-wrapper">
+  <div class="row">
+    <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-9">
+              <div class="d-flex align-items-center align-self-start">
+                <h3 class="mb-0"><%=@analise.count%></h3>
+                <p class="text-warning ml-2 mb-0 font-weight-medium">Ver</p>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="icon icon-box-warning">
+                <span class="mdi mdi-alarm-multiple icon-item "></span>
+              </div>
+            </div>
+          </div>
+          <h6 class="text-muted font-weight-normal">Solicitações em análise</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-9">
+              <div class="d-flex align-items-center align-self-start">
+                <h3 class="mb-0"><%=@aceites.count%></h3>
+                  <p class="text-success ml-2 mb-0 font-weight-medium">Ver</p>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="icon icon-box-success">
+                <span class="mdi mdi-check icon-item"></span>
+              </div>
+            </div>
+          </div>
+          <h6 class="text-muted font-weight-normal">Solicitações aceites</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-9">
+              <div class="d-flex align-items-center align-self-start">
+                <h3 class="mb-0"><%=@recusados.count%></h3>
+                  <p class="text-danger ml-2 mb-0 font-weight-medium">Ver</p>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="icon icon-box-danger">
+                <span class="mdi mdi-close-octagon-outline icon-item"></span>
+              </div>
+            </div>
+          </div>
+          <h6 class="text-muted font-weight-normal">Solicitações recusadas</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="row">
+<div class="col-lg-9 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Tabela de pedidos</h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+														<th>Nome do suarioempresa</th>
+														<th>Nome da empresa</th>
+														<th>Data do pedido</th>
+                          </tr>
+                        </thead>
+												<%@perfil_empps.each do |a| %>
+                        <tbody>
+                          <tr>
+                            <td><%= a.user.nome%> </td>
+                            <td><%= a.empresa.nome%> </td>
+														<td><%=a.created_at.strftime("%d %B %Y")%> </td>
+														<td>
+															<%=link_to 'Mostrar', action: 'show', id: a%>
+														</td>
+                          <td>
+                            <%= link_to 'Aceitar', aceitar_admin_perfil_empresarial_path(current_admin.id, a), method: :post%>
+                        </td>
+
+											  </tbody>
+                        <%end%>
+                      </table>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+						</div>
+					</div>

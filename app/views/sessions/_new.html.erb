@@ -1,0 +1,40 @@
+<% provide(:title, "Log in") %>
+<h1>Log in</h1>
+
+    <%= form_for(:session, url: login_path) do |f| %>
+
+    <form class="mt-4">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-user-o"></i></span></div>
+                <%= f.label :email %>
+                <%= f.email_field :email, class: 'border rounded border-white form-control' %>
+                <div class="input-group-append"></div>
+            </div>
+
+
+
+          <div class="form-group">
+              <div class="input-group">
+                  <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-lock"></i></span></div>
+                  <%= f.label :password %>
+                  <%= f.password_field :password, class: 'border rounded border-white form-control', style:"background-color: #def0f8; %>
+                <div class="input-group-append"></div>
+              </div>
+          </div>
+
+
+        <div class="form-group">
+            <div class="form-check">
+              <%= f.label :remember_me, class: "form-check-label" do %>
+                <%= f.check_box :remember_me, class: "form-check-input", style:"background-color: #def0f8;%>
+
+        </div>
+          <% end %>
+          <div class="form-group">
+            <%= f.submit "Log in", class: "btn btn-primary btn-block", style:"width: 150px;background-color: rgb(62,140,228);height: 48px;margin-left: 85px;" %>
+</div>
+    <% end %>
+
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+</form>

@@ -1,0 +1,24 @@
+<h3>Acompanhar Solicitação de Perfil Empresa</h3> <br />
+<% if current_user.perfil_empresarials.n_aprovado%>
+  <% if current_user.perfil_empresarials.recusado %>
+    <div class="alert alert-error">
+      <strong>Solicitação Negada!</strong> <br />
+      <%=current_user.perfil_empresarials.observacao%>
+ <br />
+    </div>
+    <strong>Mensagem do Analista: </strong> <br />
+    <label>Deve conter umamensagem</label>
+    <br /> <br />
+    <%= link_to 'Solicitar Novamente o Perfil de Empresa', new_consumidor_perfil_empresarial_path(current_user.id)%> %>
+  <% else %>
+    <div class="alert">
+      <strong>Desculpe!</strong> <br />
+      <%=current_user.perfil_empresarials.observacao%>
+    </div>
+  <% end %>
+<% else %>
+  <div class="alert alert-success">
+    <strong>Solicitação Realizada com Sucesso!</strong> <br />
+    <%=current_user.perfil_empresarials.observacao%>
+  </div>
+<% end %>

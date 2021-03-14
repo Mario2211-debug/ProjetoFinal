@@ -1,0 +1,16 @@
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @avaliacao, :url => {:action => :show}  do  |f| %>
+
+      <%= f.label :nome %>
+      <%= f.text_field :nome, class: 'form-control' %>
+
+      <%= f.label :ativo %>
+      <%= f.collection_select :ativo, Avaliacao.order(:id), :id, :ativo, include_blank: true %> <br />
+
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>

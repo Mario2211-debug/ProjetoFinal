@@ -1,0 +1,78 @@
+
+                          <div class="row" data-product-id="<%= @queixa.id %>">
+                            <div class="col-lg-12 grid-margin stretch-card">
+                          <div class="card">
+                          <div class="card-body">
+<h4 class="card-title"><h2>Reclamação - <%=link_to @queixa.empresa.nome, empresa_path(@queixa.empresa)%></h2>
+  <br>
+  <div class="mb-4">
+
+<div class="row justify-content-between">
+<div class="col-lg-4">
+<div class="card-content">
+<address>
+<h4 style="margin-bottom:0px;">Título</h4>
+<p style="margin-left: 20px;"><%=@queixa.titulo%></p>
+
+<h4 style="margin-bottom:0px;">Assunto</h4>
+<p style="margin-left: 20px;">
+  <%if @queixa.assunto.nil?%>
+   sem assunto
+    <%else%>
+    <%=@queixa.assunto.nome%>
+      <%end%>
+    </p>
+
+<h4 style="margin-bottom:0px;">Sentimento</h4>
+<p style="margin-left: 20px;"><%if @queixa.sentimento.nome == 'Calmo'%>
+  <label class="mr-2 badge badge-warning" style="margin-left: 7px;">
+  Calmo
+  </label>
+  <%elsif @queixa.sentimento.nome == 'Furioso' %>
+  <label class="mr-2 badge badge-danger" style="margin-left: 7px;">
+  Furioso
+  </label>
+  <%else%>
+  <label class="mr-2 badge badge-success" style="margin-left: 7px;">
+    Satisfeito
+  </label>
+  <%end%></p>
+
+<h4 style="margin-bottom:0px;">Empresa</h4>
+<p style="margin-left: 20px;"><%=@queixa.empresa.nome%></p>
+
+<h4 style="margin-bottom:0px;">Consumidor</h4>
+<p style="margin-left: 20px;"><%=@queixa.user.nome%></p>
+</address>
+</div>
+</div>
+
+<div class="col-lg-7 grid-margin">
+<h5 style="margin-bottom:0px; margin-top:20px;">Descrição</h5>
+<%= @queixa.descricao%>
+<h5 style="margin-bottom:0px; margin-top:20px;">Réplica do vendedor</h5>
+<div class="alert alert-danger alert-dismissible fade show">
+  <%if @queixa.replica.nil?%>
+
+  <%else%>
+  <%= @queixa.replica%>
+  <%end%>
+</div>
+<%if @queixa.replica.nil?%>
+<% else %>
+<h5 style="margin-bottom:0px; margin-top:20px;">Mensagem de avaliação</h5>
+<div class="alert alert-warning alert-dismissible fade show">
+  <%if @queixa.mensagem.nil?%>
+  <%else%>
+  <%= @queixa.mensagem%>
+  <%end%>
+</div>
+<%= link_to "Avaliar", edit_consumidor_queixa_path(current_user.id, @queixa.id), class:'btn btn-primary mb-2'%>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

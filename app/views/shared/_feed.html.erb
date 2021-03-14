@@ -1,0 +1,17 @@
+<% if @feed_items.any? %>
+  <ol class="microposts" style="display: contents;">
+    <%= render @feed_items %>
+  </ol>
+    <%= will_paginate @feed_items%>
+  <%else %>
+  <div class="profile-timeline">
+    <div class="grid-margin stretch-card">
+<div class="card">
+<div class="card-body">
+  <a href="#"><h2>Ainda não ha reclamações</h2></a>
+</div>
+</div>
+</div>
+
+  </div>
+<% end %>

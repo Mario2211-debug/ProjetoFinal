@@ -1,0 +1,20 @@
+<% provide(:title, "Admin Page") %>
+<h1>Pedidos para adicionar empresas</h1>
+<table>
+  <thead>
+    <th>Nome</th>
+    <th>observacao</th>
+    <th>Estado</th>
+  </thead>
+  <tbody>
+    <tr>
+<td><%=@add_empresa.nome%></td>
+<td><%=@add_empresa.email%></td>
+<td><%=@add_empresa.observacao%></td>
+<td><%=link_to 'Edit', edit_admin_empresa_path(@add_empresa.empresa.id)%></td>
+<td><%=link_to 'Voltar', admin_addempresa_path(@add_empresa)%></td>
+
+ </tr>
+  </tbody>
+
+</table>

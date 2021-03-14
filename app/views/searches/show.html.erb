@@ -1,0 +1,66 @@
+<p><%= link_to "Back", new_search_path %></p>
+<% if @busca.search_queixa.empty? %>
+    <p>Nenhum resultado de <%=@busca.titulo %>.</p>
+<% else %>
+        <div class="container">
+                  <div class="row">
+                    <!-- BEGIN SEARCH RESULT -->
+                    <div class="col-md-12">
+                      <div class="grid search">
+                        <div class="grid-body">
+                          <div class="row">
+                            <!-- BEGIN FILTERS -->
+                            <div class="col-md-3">
+                              <h2 class="grid-title"><i class="fa fa-filter"></i> Filtros</h2>
+                              <hr>
+
+                              <!-- BEGIN FILTER BY CATEGORY -->
+                              <h4>Por Empresas:</h4>
+                              <div class="checkbox">
+                                <label><input type="checkbox" class="icheck"> Application</label>
+                              </div>
+                              <div class="checkbox">
+                                <label><input type="checkbox" class="icheck"> Design</label>
+                              </div>
+                              <div class="checkbox">
+                                <label><input type="checkbox" class="icheck"> Desktop</label>
+                              </div>
+                              <div class="checkbox">
+                                <label><input type="checkbox" class="icheck"> Management</label>
+                              </div>
+                              <div class="checkbox">
+                                <label><input type="checkbox" class="icheck"> Mobile</label>
+                              </div>
+                              <!-- END FILTER BY CATEGORY -->
+
+                              <div class="padding"></div>
+
+                              <!-- BEGIN FILTER BY DATE -->
+                              <h4>Por Data:</h4>
+                              De
+                              <div class="input-group date form_date" data-date="2014-06-14T05:25:07Z" data-date-format="dd-mm-yyyy" data-link-field="dtp_input1">
+                                <input type="text" class="form-control">
+                                <span class="input-group-addon bg-blue"><i class="fa fa-th"></i></span>
+                              </div>
+                              <input type="hidden" id="dtp_input1" value="">
+
+                              Até
+                              <div class="input-group date form_date" data-date="2014-06-14T05:25:07Z" data-date-format="dd-mm-yyyy" data-link-field="dtp_input2">
+                                <input type="text" class="form-control">
+                                <span class="input-group-addon bg-blue"><i class="fa fa-th"></i></span>
+                              </div>
+                              <input type="hidden" id="dtp_input2" value="">
+                              <!-- END FILTER BY DATE -->
+
+                              <div class="padding"></div>
+
+                            </div>
+                            <!-- END FILTERS -->
+
+<%= render 'resultados' %>
+
+                  </div>
+                  </div>
+
+
+<% end %>

@@ -1,0 +1,103 @@
+                            <!-- BEGIN RESULT -->
+                            <div class="col-md-9">
+                              <h2><i class="fa fa-file-o"></i> Resultado</h2>
+                              <hr>
+                              <!-- BEGIN SEARCH INPUT -->
+                              <div class="input-group">
+                                <input type="text" class="form-control" value="web development">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                                </span>
+                              </div>
+                              <!-- END SEARCH INPUT -->
+
+
+
+
+
+
+                              
+                              <p>Resultados da pesquisa "<%=@busca.descricao %>"</p>
+
+                              <div class="padding"></div>
+
+                              <div class="row">
+                                <!-- BEGIN ORDER RESULT -->
+                                <div class="col-sm-6">
+                                  <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                      Order by <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                      <li><a href="#">Name</a></li>
+                                      <li><a href="#">Date</a></li>
+                                      <li><a href="#">View</a></li>
+                                      <li><a href="#">Rating</a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                                <!-- END ORDER RESULT -->
+
+                                <div class="col-md-6 text-right">
+                                  <div class="btn-group">
+                                    <button type="button" class="btn btn-default active"><i class="fa fa-list"></i></button>
+                                    <button type="button" class="btn btn-default"><i class="fa fa-th"></i></button>
+                                  </div>
+                                </div>
+                              </div>
+
+                      <!-- BEGIN TABLE RESULT -->
+                      <h2>Empresas relacionadas</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                              <tbody>
+                                  <% @empresa.each.with_index do |q, i|%>
+                                              <tr>
+                                                <td class="number text-center"><%=i+1%></td>
+                                                <td class="image"><img src="<%=image_url q.displayed_image, width:'150' %>" alt=""></td>
+                                                <td class="product"><strong><%=link_to q.nome, empresa_path(q)%></strong><br>Descrição da empresa.</td>
+                                                <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
+                                                <td class="price text-right"><%=q.total%></td>
+                                              </tr>
+                                  <%end%>
+                                            </tbody>
+                                          </table>
+                                          </div>
+                                          <!-- END TABLE RESULT -->
+        <!-- BEGIN POST-->
+        <% @busca.search_queixa.each do |q|%>
+        <div class="post">
+        <div class="post-heading">
+        <div class="post-title">
+          <h4> <%=q.assunto.nome%> </h4>
+          </div>
+        </div>
+        <div class="post-description">
+        <p> <%=link_to q.descricao, queixa_path(q)%></p>
+        <div class="post-state-details">
+        <%if q.situacao_id == 1%>
+            <p class="badge badge-success">Resolvida</p><p class="badge">5 <span> hrs</span></p>
+        <%elsif q.situacao_id == 2%>
+             <p class="badge badge-danger">Não Resolvida</p>
+         <%else%>
+             <p class="badge badge-danger">Não resolvida</p><p class="badge">5 <span> hrs</span></p>
+        <%end%>
+            </div>
+        </div>
+        </div>
+        <br>
+<% end %>
+        <!-- END POST -->
+
+
+                              <!-- BEGIN PAGINATION -->
+
+
+                              <!-- END PAGINATION -->
+                            </div>
+                            <!-- END RESULT -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- END SEARCH RESULT -->

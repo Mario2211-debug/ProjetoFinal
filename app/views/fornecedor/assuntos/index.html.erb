@@ -1,0 +1,35 @@
+<div class="col-md-8 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Serviços da empresa</h4>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Empresa</th>
+              <th>Ramo de atividade</th>
+            </tr>
+          </thead>
+          <tbody>
+              <%@assuntos.each do |q|%>
+            <tr>
+              <td><%= q.nome%></td>
+              <td><%= q.empresa.nome%></td>
+              <td><%= q.atividade.nome%></td>
+                <td style="text-align: center;">
+        <%=link_to '<i class="fa fa-pencil"></i>'.html_safe, fornecedor_empresa_queixa_path(current_user.id, current_user.empresa.id, q  ), class:"btn btn-primary shadow btn-xs sharp mr-1"%>
+          </td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-right"">
+        <%=link_to 'Novos Serviços', new_fornecedor_assunto_path(current_user.empresa.id), class:"btn btn-primary"%>
+
+      </div>
+
+    </div>
+  </div>
+</div>

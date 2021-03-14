@@ -1,0 +1,36 @@
+<div class="col-xl-6 col-lg-12">
+<div class="main_content_inner">
+                  <div class="card">
+                    <div class="card-header">
+<h4 class="title">Informe-nos sobre a empresa que procura!</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="basic-form">
+<%= form_for @add_empresa,:url => {:action => :create}  do |f| %>
+
+<div class="form-group row">
+<%= f.label :Infoemações_da_empresa,class:'uk-form-label', for:'float-textarea'%>
+  <%= f.text_area :observacao, placeholder: "text", :required => true, class:'uk-input', style:'background-color: #def0f8;' %>
+</div>
+
+<div class="form-group row">
+  <%= f.label :Nome_da_empresa, class:'uk-form-label', for:'float-textarea'%>
+    <%= f.text_field :nome, placeholder: "Nome da empresa", :required => true, class:'uk-input', style:'background-color: #def0f8;' %>
+  </div>
+
+
+    <div class="form-group row">
+    <%= f.label :Email_da_empresa, class:'uk-form-label', for:'float-textarea'%>
+      <%= f.text_field :email, placeholder: "Email da empresa", :required => true, class:'uk-input', style:'background-color: #def0f8;' %>
+    </div>
+
+  <div class="form-group row">
+    <%= f.submit "Solicitar!", class:"button primary mr-2"%>
+  </div>
+
+  <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>

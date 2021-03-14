@@ -1,0 +1,19 @@
+<% provide(:title, "Admin Page") %>
+<h1>Avaliações</h1>
+<table>
+  <thead>
+    <th>Nome</th>
+    <th>Estado</th>
+  </thead>
+  <tbody>
+    <tr>
+<td><%=@avaliacao.nome%></td>
+<td><%=@avaliacao.ativo%></td>
+
+<td><%=link_to 'Voltar', admin_avaliacaos_path(@avaliacao)%></td>
+<td><%=link_to 'Edit', edit_admin_avaliacao_path(@avaliacao)%></td>
+
+ </tr>
+  </tbody>
+
+</table>
