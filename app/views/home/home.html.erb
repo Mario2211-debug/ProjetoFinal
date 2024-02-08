@@ -1,111 +1,127 @@
-        <div class="uk-grid" style="margin-top: 50px;">
+<div class="demo-hero bg-gradient-to-b from-blue-500 to-sky-300 uk-visible@m">
+  <div class="uk-container mt-sm-5 mb-md-0 my-md pb-0">
+    <div class="uk-width-2-3@m my-lg-5 text-center m-auto">
+      <h1 class="text-white">Bem-vindo ao teu site de reclamações em Angola </h1>
+      <br>
+      <p class="text-white">O mais simples e amigável para o desenvolvedor, rico em recursos e altamente personalizável. Seguimos os mais altos padrões da indústria para trazer a você o melhor modelo social</p>
+      <br>
+      <!-- form search-->
+      <div class="head_search">
+        <%= form_with model: @busca do |f| %>
+          <div class="head_search_cont" aria-expanded="false">
+            <%= f.text_field :descricao, :placeholder => 'Digite alguma coisa', class:'form-control'%>
+            <i class="s_icon uil-search-alt"></i>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-            <!-- sidebar -->
-            <div class="uk-width-expand">
-                <div class="card-suggestion_wrapper  sidebar-absolute " style="">
-                    <div class="card-suggestion_wrapper_header">
-                        <span class="text-white">Empresas que mais resolveram</span>
-                        <p class="text-white">Nos útimos 30 dias</p>
-                        <p class="see-all"><a href="" class="text-white">Ver todos</a></p>
-                <div class="uk-position-relative uk-slider" uk-slider="finite: true; autoplay:true">
-                  <div class="uk-slider-container pb-3">
-                  <ul class="uk-slider-items uk-child-width-1-3@m uk-grid-small uk-grid sl_pro_users" style="transform: translate3d(-300.047px, 0px, 0px);">
-                <%@empresa.each do |f|%>
-                <%if f.indiceS >= 50 %>
-              <li tabindex="-1" class="">
-                <a class="user" href="#">
-                  <%=image_tag f.displayed_image%>
-                <span><%=f.nome%></span>
-                </a>
-              </li>
+<div class="container">
+  <div class="uk-grid" style="margin-top: 50px;">
+    <!-- sidebar -->
+    <div class="uk-width-expand">
+      <div class="card-suggestion_wrapper  sidebar-absolute ">
+        <div class="card-suggestion_wrapper_header">
+          <span class="text-white">Empresas que mais resolveram</span>
+          <p class="text-white">Nos últimos 30 dias</p>
+          <p class="see-all"><a href="" class="text-white">Ver todos</a></p>
+          <div class="uk-position-relative uk-slider" uk-slider="finite: true; autoplay:true">
+            <div class="uk-slider-container pb-3">
+              <ul class="uk-slider-items uk-child-width-1-3@m uk-grid-small uk-grid">
+                <% @empresa.each do |f| %>
+                  <% if f.indiceS >= 50 %>
+                    <li tabindex="-1" style="color: transparent !important;border: none;border-radius: 0 !important;background-color: transparent !important;">
+                      <a class="user" href="#">
+                        <%= image_tag f.displayed_image %>
+                        <span><%= f.nome %></span>
+                      </a>
+                    </li>
+                  <% end %>
                 <% end %>
-                <% end %>
-                  </ul>
+              </ul>
               <a class="uk-position-center-left uk-hidden-hover slidenav-prev sl_pro_users_prev" href="#" uk-slider-item="previous"></a>
               <a class="uk-position-center-right-out uk-position-small uk-hidden-hover slidenav-next sl_pro_users_next uk-invisible" href="#" uk-slider-item="next"></a>
-                </div>
-                </div>
-                <%@empresa.each do |f|%>
-                <%if f.indiceS >= 50 %>
-              <div class="sl_sidebar_sugs">
-                  <div class="sl_sidebar_sugs_avatar">
-                    <%=image_tag f.displayed_image%>
-            </div>
-            <div class="sl_sidebar_sugs_text">
-              <%=link_to f.nome, empresa_path(f), class:"sl_user_link_name text-white"%>
-            </div>
-            </div>
-            <% end %>
-            <% end %>
             </div>
           </div>
-        </div>
-
-
-<div class="col-lg-7 stretch-card">
-                    <div class="card">
-                        <div class="card-header border-0 pb-0 d-sm-flex d-block">
-                            <div>
-                                <h4 class="card-title mb-1 fs-28 font-w600">Ranking empresarial</h4>
-                                <p class="mb-0">Saiba mais sobre as empresas com maior índice de solucões </p>
-                            </div>
-
-                        </div>
-<%if @feed_items.count == 0%>
-<div class="card-body p-0">
-    <div class="media review-box">
-        <div class="media-body">
-            <h4 class="mt-0 mb-0 text-black"> Ainda não há avaliações</h4>
-        </div>
-
-    </div>
-</div>
-<%else%>
-  <%=render partial: 'empresa', select: @empresa, as: :empresa%>
-<%end%>
-</div>
-</div>
-
-            <!-- sidebar -->
-                <div class="uk-width-expand ">
-                    <div class="card-suggestion_wrapper sidebar-absolute" style="">
-                        <div class="card-suggestion_wrapper_header">
-                            <span class="text-white">Empresas que menos resolveram</span>
-                            <p class="text-white">Nos útimos 30 dias</p>
-                            <p class="see-all"><a href="" class="text-white">Ver todos</a></p>
-                        </div>
-                    <div class="uk-position-relative uk-slider" uk-slider="finite: true; autoplay:true">
-                      <div class="uk-slider-container pb-3">
-                      <ul class="uk-slider-items uk-child-width-1-3@m uk-grid-small uk-grid sl_pro_users" style="transform: translate3d(-300.047px, 0px, 0px);">
-                    <%@empresa.each do |f|%>
-                    <%if f.indiceS < 50 %>
-                  <li tabindex="-1" class="">
-                    <a class="user" href="#">
-                      <%=image_tag f.displayed_image%>
-                    <span><%=f.nome%></span>
-                    </a>
-                  </li>
-                    <% end %>
-                    <% end %>
-
-                      </ul>
-                  <a class="uk-position-center-left uk-hidden-hover slidenav-prev sl_pro_users_prev" href="#" uk-slider-item="previous"></a>
-                  <a class="uk-position-center-right-out uk-position-small uk-hidden-hover slidenav-next sl_pro_users_next uk-invisible" href="#" uk-slider-item="next"></a>
-                    </div>
-                    </div>
-                    <%@empresa.each do |f|%>
-                    <%if f.indiceS < 50 %>
-                  <div class="sl_sidebar_sugs">
-                      <div class="sl_sidebar_sugs_avatar">
-                        <%=image_tag f.displayed_image%>
+          <% @empresa.each do |f| %>
+            <% if f.indiceS >= 50 %>
+              <div class="sl_sidebar_sugs">
+                <div class="sl_sidebar_sugs_avatar">
+                  <%= image_tag f.displayed_image %>
                 </div>
                 <div class="sl_sidebar_sugs_text">
-                <a href="#" class="sl_user_link_name text-white"> <%=f.nome%> </a>
-                </div>
-                </div>
-                <% end %>
-                <% end %>
-
+                  <%= link_to f.nome, empresa_path(f), class:"sl_user_link_name text-white" %>
                 </div>
               </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-7 stretch-card">
+      <div class="card">
+        <div class="card-header border-0 pb-0 d-sm-flex d-block">
+          <div>
+            <h4 class="card-title mb-1 fs-28 font-w600">Ranking empresarial</h4>
+            <p class="mb-0">Saiba mais sobre as empresas com maior índice de soluções </p>
+          </div>
+        </div>
+        <% if @feed_items.count == 0 %>
+          <div class="card-body p-0">
+            <div class="media review-box">
+              <div class="media-body">
+                <h4 class="mt-0 mb-0 text-black"> Ainda não há avaliações</h4>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <%= render partial: 'empresa', select: @empresa, as: :empresa %>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- sidebar -->
+    <div class="uk-width-expand ">
+      <div class="card-suggestion_wrapper sidebar-absolute">
+        <div class="card-suggestion_wrapper_header">
+          <span class="text-white">Empresas que menos resolveram</span>
+          <p class="text-white">Nos últimos 30 dias</p>
+          <p class="see-all"><a href="" class="text-white">Ver todos</a></p>
+        </div>
+        <div class="uk-position-relative uk-slider" uk-slider="finite: true; autoplay:true">
+          <div class="uk-slider-container pb-3">
+            <ul class="uk-slider-items uk-child-width-1-3@m uk-grid-small uk-grid">
+              <% @empresa.each do |f| %>
+                <% if f.indiceS < 50 %>
+                  <li tabindex="-1" style="color: transparent !important;border: none;border-radius: 0 !important;background-color: transparent !important;">
+                    <a class="user" href="#">
+                      <%= image_tag f.displayed_image %>
+                      <span><%= f.nome %></span>
+                    </a>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+            <a class="uk-position-center-left uk-hidden-hover slidenav-prev sl_pro_users_prev" href="#" uk-slider-item="previous"></a>
+            <a class="uk-position-center-right-out uk-position-small uk-hidden-hover slidenav-next sl_pro_users_next uk-invisible" href="#" uk-slider-item="next"></a>
+          </div>
+        </div>
+        <% @empresa.each do |f| %>
+          <% if f.indiceS < 50 %>
+            <div class="sl_sidebar_sugs">
+              <div class="sl_sidebar_sugs_avatar">
+                <%= image_tag f.displayed_image %>
+              </div>
+              <div class="sl_sidebar_sugs_text">
+                <a href="#" class="sl_user_link_name text-white"> <%= f.nome %> </a>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

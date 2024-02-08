@@ -2499,10 +2499,10 @@ select.uk-form-width-xsmall {
  */
 /* Horizontal */
 .uk-grid {
-  /*margin: auto;*/
+  margin: auto;
 }
 .uk-grid > * {
- padding: 20px;
+ /*padding: 20px;*/
 }
 /* Vertical */
 .uk-grid + .uk-grid,
@@ -5677,7 +5677,7 @@ ul.uk-nav-sub {
  * 1. Resolve frame rate issues on devices with lower frame rates by forcing hardware acceleration
  */
 .uk-sticky-fixed {
-/*  z-index: 980;*/
+ z-index: 980;
   box-sizing: border-box;
   margin: 0 !important;
   /* 1 */

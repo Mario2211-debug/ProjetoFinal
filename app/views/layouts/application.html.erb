@@ -4,12 +4,12 @@
     <title>ReclameAi</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-     <%= stylesheet_link_tag 'home/home', media: 'all', 'data-turbolinks-track': 'reload' %>
-     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <%= stimulus_include_tags %>
-    <%= javascript_include_tag "turbo", type: "module-shim" %>
-    <%= yield :head %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'home/home', media: 'all', 'data-turbolinks-track': 'reload' %>
+   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <%= javascript_include_tag "turbo", type: "module-shim" %>
+  <%= turbo_include_tags %>
   </head>
   <body>
       <div class="main_content">

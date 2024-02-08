@@ -1,1 +1,21 @@
-                
+<div class="uk-first-column">
+                                <div class="product">
+                                    <div class="product_info">
+                                        <div class="product-image">
+                                            <a href="<%=empresa_path(empresa.id)%>">
+                    <%=image_tag empresa.displayed_image, width:"100", loading: "lazy", alt:empresa.nome, width:"150"%>
+                                                              </a>
+                                        </div>
+                                        <div class="produc_info">
+                                            <div class="product-by">
+                                                <a href="#"> <%=empresa.atividade.nome %> </a>
+                                            </div>
+                                            <div class="product-title">
+                                                <a href="#">  <%=empresa.nome %> </a>
+                                            </div>
+                                            <div class="product-price"> <%=empresa.rank.round(1)%> </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+        </div>

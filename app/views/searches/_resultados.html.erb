@@ -12,11 +12,6 @@
                               <!-- END SEARCH INPUT -->
 
 
-
-
-
-
-                              
                               <p>Resultados da pesquisa "<%=@busca.descricao %>"</p>
 
                               <div class="padding"></div>
@@ -51,13 +46,13 @@
                                         <div class="table-responsive">
                                             <table class="table table-hover">
                                               <tbody>
-                                  <% @empresa.each.with_index do |q, i|%>
+                                  <% @resultados.each_with_index do |q, i|%>
                                               <tr>
                                                 <td class="number text-center"><%=i+1%></td>
                                                 <td class="image"><img src="<%=image_url q.displayed_image, width:'150' %>" alt=""></td>
                                                 <td class="product"><strong><%=link_to q.nome, empresa_path(q)%></strong><br>Descrição da empresa.</td>
                                                 <td class="rate text-right"><span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span></td>
-                                                <td class="price text-right"><%=q.total%></td>
+                                                <td class="price text-right"><%=q.total.round(1)%></td>
                                               </tr>
                                   <%end%>
                                             </tbody>

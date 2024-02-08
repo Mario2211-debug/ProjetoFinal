@@ -1,56 +1,124 @@
+<p id="notice"><%= notice %></p>
 <%=turbo_stream_from :queixas %>
 
-                      <div class="single-group">
-                                          <div class="group-cover">
-
-                                              <!--Signle group cover -->
-
-                                          </div>
-
-                                          <div class="single-group-details">
-                                            <div class="text-center">
-                                                  <div class="single-group-image">
-                                                      <a href="#">
-                                                          <img src="" alt="">
-                                                      </a>
-                                                  </div>
-                                                  <div class="single-group-details-info">
-                                                      <h3> <%=@empresa.nome%> </h3>
-                                                      <p>
-                                                      </p><p><%=@empresa.atividade.nome%> </p>
-                                                      <p></p>
-                                                      </div>
-                                              </div>
-                                              <div class="right-side">
-                                                  <div class="btn-subscribe">
-                                                    <%= button_to 'Votar', votar_empresa_path(@empresa), method: :post, class:'btn btn-primary light sharp' %>
-                                                  </div>
-                                              </div>
-                                          </div>
-
-                                          <div class="nav-single-group uk-sticky" uk-sticky="media : @s" style="">
-                                              <nav class="responsive-tab">
-                                                  <ul>
-                                                    <div class="text-center">
-                                                      <li style="color:black"><%=link_to '<i class="flaticon-381-home-2 "></i>Pagina inicial'.html_safe, empresas_path(@empresa)%></li>
-                                                      <li style="color:black"><%=link_to '<i class="flaticon-381-speaker"></i>Reclamações'.html_safe, empresas_path(@empresa)%></li>
-                                                      <li style="color:black"><%=link_to '<i class="flaticon-381-success"></i>Principais problemas'.html_safe, empresas_path(@empresa)%></li>
-                                                      <li style="color:black"><%=link_to '<i class="flaticon-381-help-1""></i>Sobre'.html_safe, empresas_path(@empresa)%></li>
-                                                    </div>
-                                                  </ul>
-                                              </nav>
-                                            </div><div class="uk-sticky-placeholder" style="height: 61px; margin: 0px;" hidden=""></div>
 
 
+
+                                      <div class="row gutters-sm" >
+                                        <div class="col-md-4 mb-3">
+
+
+                                        </div>
                                       </div>
+
+
+
+
+
+
+<div class="container">
+  <div class="row">
+
 
                 <div class="section-small">
                   <div class="uk-grid">
 
                     <!-- sidebar -->
+                    <div class="uk-width-expand">
+                        <div class="card-suggestion_wrapper sidebar-absolute">
+                          <div class="card">
+                            <div class="card-footer text-right border-0 mt-0"  style="font-size: 100%;">
+                      <%if @empresa.rank.between?(0, 2.9)%>
+                        <h3 class="mb-1 badge badge-rounded badge-danger"  style="font-size: 100%;">Péssima</h3>
+                      <%end%>
+
+                      <%if @empresa.rank.between?(3.0, 4.9)%>
+                      <h3 class="mb-1 badge badge-rounded badge-danger light"  style="font-size: 100%;">Não recomendada</h3>
+                      <%end%>
+
+                      <%if  @empresa.rank.between?(5.0, 6.9)%>
+                      <h3 class="mb-1 badge badge-rounded badge-warning light"  style="font-size: 100%;">Regular</h3>
+                      <%end%>
+
+                      <%if @empresa.rank.between?(7.0, 8.9)%>
+                      <h3 class="mb-1 badge badge-rounded badge-success light"  style="font-size: 100%;">Boa</h3>
+                      <%end%>
+
+                      <%if @empresa.rank >= 9.0%>
+                      <h3 class="mb-1 badge badge-roundedtext-gold light"  style="font-size: 100%;">Excelente</h3>
+                      <%end%>
+                    </div>
+                            <div class="card-body">
+                              <div class="d-flex flex-column align-items-center text-center">
+                                <%=image_tag @empresa.displayed_image, loading: "lazy", alt:@empresa.nome, class:"rounded-circle", width:"150"%>
+                                <img src="" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                  <h4><%= @empresa.nome%></h4>
+                                  <p class="text-secondary mb-1"><%= @empresa.atividade.nome%></p>
+                                  <p class="text-muted font-size-sm"><%= @empresa.endereco.cidade%>, <%= @empresa.endereco.rua%>, <%= @empresa.endereco.numero%></p>
+                                  <%=button_to 'Votar +1', votar_empresa_path(@empresa), method: :post, class:'btn btn-primary' %>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
     <%= render 'rank' %>
+</div>
+</div>
 
 <div class="col-lg-6 grid-margin stretch-card">
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Nome Completo</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <%= @empresa.nome%>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Email</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <%= @empresa.email%>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Telefone</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <%= @empresa.contacto.valor%>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Mobile</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          (320) 380-4539
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Endereço</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          <%= @empresa.endereco.bairro%>, <%= @empresa.endereco.rua%>, <%= @empresa.endereco.numero%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
   <div class="card">
     <div class="card-header border-0 pb-0 d-sm-flex d-block">
       <div>
@@ -80,13 +148,13 @@
 
     <div class="card-body tab-content"  id="queixas">
     <div class="tab-pane fade" id="monthly">
-        <%=render @queixas%>
+      <%= render :partial => "queixas/queixa", :collection => @queixas %>
       </div>
       <div class="tab-pane fade" id="weekly">
-        <%=render @queixas%>
+        <%= render :partial => "queixas/queixa", :collection => @queixas %>
       </div>
       <div class="tab-pane fade show active" id="today">
-        <%=render @queixas%>
+        <%= render :partial => "queixas/queixa", :collection => @queixas %>
       </div>
 
     </div>
@@ -98,51 +166,77 @@
           <!-- sidebar -->
           <div class="uk-width-expand">
             <div class="card-suggestion_wrapper sidebar-absolute " style="">
-          <div class="card overflow-hidden">
-                                                  <div class="text-center p-3 overlay-box " style="background-image: url();">
-                                                    <div class="profile-photo">
-                                                      <%=image_tag @empresa.displayed_image, width:"100", class:"s-fluid rounded-circle", loading: "lazy", alt:@empresa.nome, class:"rounded-circle", width:"150"%>
-                                                    </div>
-                                                    <h3 class="mt-3 mb-1 text-white"><%= @empresa.nome%></h3>
-                                                    <p class="text-white mb-0">Empresa</p>
-                                                  </div>
-                                                  <ul class="list-group list-group-flush">
-                                                    <li class="list-group-item d-flex justify-content-between">
-                                                      <span class="mb-0">E-mail</span>
-                                                      <strong class="text-muted"><%= @empresa.email%>	</strong></li>
-                                                    <li class="list-group-item d-flex justify-content-between">
-                                                      <span class="mb-0">Endereço</span>
-                                                      <strong class="text-muted"><%=@empresa.endereco.cidade%>	</strong></li>
-                                                    <li class="list-group-item d-flex justify-content-between">
-                                                      <span class="mb-0">Bairro</span>
-                                                      <strong class="text-muted"><%=@empresa.endereco.bairro%>	</strong></li>
-                                                    <li class="list-group-item d-flex justify-content-between">
-                                                      <span class="mb-0">Contacto</span>
-                                                      <strong class="text-muted"><%=@empresa.contacto.valor%>	</strong></li>
-                                                  </ul>
-                                                                <div class="card-footer text-center border-0 mt-0"  style="font-size: 100%;">
-                                                          <%if @empresa.total.between?(0, 2.9)%>
-                                                            <h3 class="mb-1 badge badge-rounded badge-danger"  style="font-size: 100%;">Péssima</h3>
-                                                          <%end%>
 
-                                                          <%if @empresa.total.between?(3.0, 4.9)%>
-                                                          <h3 class="mb-1 badge badge-rounded badge-danger light"  style="font-size: 100%;">Não recomendada</h3>
-                                                          <%end%>
 
-                                                          <%if  @empresa.total.between?(5.0, 6.9)%>
-                                                          <h3 class="mb-1 badge badge-rounded badge-warning light"  style="font-size: 100%;">Regular</h3>
-                                                          <%end%>
+                <div class="card overflow-hidden">
 
-                                                          <%if @empresa.total.between?(7.0, 8.9)%>
-                                                          <h3 class="mb-1 badge badge-rounded badge-success light"  style="font-size: 100%;">Boa</h3>
-                                                          <%end%>
+<div class="card-body">
 
-                                                          <%if @empresa.total >= 9.0%>
-                                                          <h3 class="mb-1 badge badge-roundedtext-gold light"  style="font-size: 100%;">Excelente</h3>
-                                                          <%end%>
-                                                        </div>
+  <h3 class="text-dark card-tittle">Sobre a empresa</h3>
+  <br>
+      <p class="border-bottom pb-4">Diz-nos oq achou deste conteúdo?</p>
+      <ul class="list-unstyled">
+          <li class="d-flex mb-4"> <i class="fa fa-map-marker icon-primary"></i>
+              <div class="pl-3">
+                  <h6 class="text-dark">Endereço</h6>
+                  <ul class="list-unstyled">
+                      <li><%=@empresa.endereco.cidade.truncate(10)%>, <%=@empresa.endereco.rua.truncate(10)%>	</li>
+                  </ul>
+              </div>
+          </li>
+          <li class="d-flex mb-4"> <i class="fa fa-envelope-o icon-primary"></i>
+              <div class="pl-3">
+                  <h6 class="text-dark">Email</h6>
+                  <ul class="list-unstyled">
+                      <li><%= @empresa.email.truncate(20)%></li>
+                      <li><%= @empresa.email.truncate(20)%></li>
+                  </ul>
+              </div>
+          </li>
+          <li class="d-flex mb-4"> <i class="fa fa-phone icon-primary"></i>
+              <div class="pl-3">
+                  <h6 class="text-dark">Numero</h6>
+                  <ul class="list-unstyled">
+                      <li>(+244) <%=@empresa.contacto.valor%></li>
+                      <li>(+244) <%=@empresa.contacto.valor%></li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+
+</div>
+          </div>
+
+          <div class="card mt-3">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
+                <span class="text-secondary">https://bootdey.com</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github mr-2 icon-inline"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>Github</h6>
+                <span class="text-secondary">bootdey</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter mr-2 icon-inline text-info"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>Twitter</h6>
+                <span class="text-secondary">@bootdey</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>Instagram</h6>
+                <span class="text-secondary">bootdey</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
+                <span class="text-secondary">bootdey</span>
+              </li>
+            </ul>
           </div>
   </div>
+
+
           </div>
+
           </div>
         </div>
+      </div>
+    </div>

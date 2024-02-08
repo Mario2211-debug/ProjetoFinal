@@ -18,11 +18,11 @@ class UsersController < ApplicationController
   end
 
   def create
-@user = User.new(user_params)
+@user = User.new(allowed_params)
 if @user.save
-  log_in @user
+  log_in user_path(current_user)
   flash[:success] = "Welcome to the Sample App!"
-  redirect_back_or @user
+  redirect_back_or user_path(current_user)
 else
   render 'new'
   end
@@ -30,10 +30,10 @@ end
 
 
 def update
-#  @user = User.find(params[:id])
-  if @user.update_attributes(user_params)
-    flash[:success] = "Profile updated"
-     redirect_to @user
+  #@user = User.find(params[:id])
+  if @user.update(allowed_params)
+    flash[:success] = "Perfil atualizado"
+     redirect_to consumidor_index_path(current_user)
 else
   render 'edit'
 end
@@ -48,7 +48,7 @@ end
 
 def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "Usuário removido"
     redirect_to users_url
   end
 
@@ -65,7 +65,7 @@ def destroy
 
 
 private
-def user_params
+def allowed_params
   params.require(:user).permit(:nome, :email, :B_I, :avatar, :password, :password_confirmation,
      endereco_attributes: [:nome, :rua, :bairro, :cidade, :destrito, :numero],
      contacto_attributes: [:tipo, :valor],

@@ -13,9 +13,13 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
- *= require sweetalert2
-
  */
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "font-awesome";
+ @import "sweetalert2-rails";
+ 
+ @import "tailwindcss/base";
+ @import "tailwindcss/components";
+ @import "tailwindcss/utilities";

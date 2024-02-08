@@ -55,11 +55,14 @@
 */
 /*$primary  : #7356f1 !default;*/
 
+
+/*
+
 @import url("../simple-line-icons/css/simple-line-icons.css");
 @import url("../font-awesome-old/css/font-awesome.min.css");
 @import url("../flaticon/flaticon.css");
+@import url("../line-awesome/css/line-awesome.min.css");
 
-/*
 @import url("../icomoon/icomoon.css");
 @import url(../animate/animate.min.css);
 @import url(../aos/css/aos.min.css);
@@ -24286,9 +24289,9 @@ button {
   transition: all .5s ease-in-out;
   position: relative;
   border: 0px solid transparent;
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: 0px 12px 23px 0px rgba(62, 73, 84, 0.04);
-  height: calc(100% - 30px); }
+/*  height: calc(100% - 30px);*/ }
   @media only screen and (max-width: 575px) {
     .card {
       margin-bottom: 0.938rem;

@@ -2,12 +2,12 @@ class Admin::PerfilEmpresarialsController < ApplicationController
   #before_action :logged_in_user, only: [:create, :destroy]
   layout 'admin/dashboard'
 
-def index
-@perfil_empps = PerfilEmpresarial.all
-@aceites = PerfilEmpresarial.where(situacao_id:3)
-@recusados = PerfilEmpresarial.where(situacao_id:4)
-@analise = PerfilEmpresarial.where(situacao_id:5)
-end
+      def index
+        @solicitacoes = Empresa.where.not(situacao:6)
+        @aceites = PerfilEmpresarial.where(situacao_id:3)
+        @recusados = PerfilEmpresarial.where(situacao_id:4)
+        @analise = PerfilEmpresarial.where(situacao_id:5)
+      end
 
 def aceites
   @aceites = PerfilEmpresarial.where(situacao_id:3)

@@ -1,8 +1,11 @@
 class EmpresasController < ApplicationController
 
   def index
-    @ativas = Empresa.where(situacao_id:6).order(votos: :desc).paginate(page: params[:page], per_page: 10)
+    # @empresas = Empresa.where(situacao_id:6).order(votos: :desc).paginate(page: params[:page], per_page: 10)
+    @empresas = Empresa.includes(:atividade, :avatar_attachment).where(situacao_id: 6).order(votos: :desc).paginate(page: params[:page], per_page: 10)
     @categorias = Atividade.order(:id).limit(7)
+  #  @empresas = Atividade.order(:id).limit(7)
+
   end
 
   def show
@@ -17,7 +20,6 @@ class EmpresasController < ApplicationController
   def votar
     @empresa = Empresa.find(params[:id])
     @empresa.votos.create
-    redirect_to(empresas_path)
   end
 
   def new

@@ -25,27 +25,27 @@
                    <div class="sections">
                        <ul>
                            <li>
-                            <%=link_to ' <i class="flaticon-381-television"></i> <span class="nav-text">Minhas reclamações</span>'.html_safe, consumidor_index_path(current_user.id), class:'ai-icon'%>
+                            <%=link_to ' <i class="flaticon-381-television"></i> <span class="nav-text">Minhas reclamações</span>'.html_safe, consumidor_index_path(current_user.id), :class => side_link?(consumidor_index_path(current_user.id))%>
                             </li>
                            <li>
-                           <%=link_to '<i class="flaticon-381-success-2"></i> <span class="nav-text">Respondidas</span>'.html_safe, consumidor_respondidas_path(current_user.id)%>
+                           <%=link_to '<i class="flaticon-381-success-2"></i> <span class="nav-text">Respondidas</span>'.html_safe, consumidor_respondidas_path(current_user.id), :class => side_link?(consumidor_respondidas_path(current_user.id))%>
                            </li>
                            <li>
-                           <%=link_to '<i class="flaticon-381-close"></i> <span class="nav-text">Não Respondidas</span>'.html_safe, consumidor_nao_respondidas_path(current_user.id)%>
+                           <%=link_to '<i class="flaticon-381-close"></i> <span class="nav-text">Não Respondidas</span>'.html_safe, consumidor_nao_respondidas_path(current_user.id), :class => side_link?(consumidor_nao_respondidas_path(current_user.id))%>
                            </li>
                            <li>
-                           <%=link_to '<i class="flaticon-381-success"></i>Avaliadas'.html_safe, consumidor_avaliadas_path(current_user.id)%>
+                           <%=link_to '<i class="flaticon-381-success"></i>Avaliadas'.html_safe, consumidor_avaliadas_path(current_user.id), :class => side_link?(consumidor_avaliadas_path(current_user.id))%>
                            </li>
                            <%if current_user.perfil_empresarial.nil? && current_user.empresa_id.nil?%>
                            <%elsif current_user.perfil_empresarial.situacao_id==3%>
-                           <li><%=link_to '<i class="fa fa-heart" style="color: #f72b50;"></i>Perfil empresarial'.html_safe, fornecedor_index_path(current_user.empresa_id)%></li>
+                           <li><%=link_to '<i class="fa fa-heart" style="color: #f72b50;"></i>Perfil empresarial'.html_safe, fornecedor_index_path(current_user.empresa_id), :class => side_link?(fornecedor_index_path(current_user.id))%></li>
                           <%else%>
                           <li>
-                          <%=link_to '<i class="flaticon-381-warning-1"></i><span class="nav-text">Pendente</span>'.html_safe, acompanhar_consumidor_perfil_empresarial_path(current_user.id, current_user.perfil_empresarial.id)%>
+                          <%=link_to '<i class="flaticon-381-warning-1"></i><span class="nav-text">Pendente</span>'.html_safe, acompanhar_consumidor_perfil_empresarial_path(current_user.id, current_user.perfil_empresarial.id), :class => side_link?(acompanhar_consumidor_perfil_empresarial_path(current_user.id, current_user.perfil_empresarial.id))%>
                           </li>
                           <%end%>
                           <li>
-                          <%=link_to '<i class="flaticon-381-turn-off"></i><span class="nav-text"> Desativada</span>'.html_safe, consumidor_desativadas_path(current_user.id)%>
+                          <%=link_to '<i class="flaticon-381-turn-off"></i><span class="nav-text"> Desativada</span>'.html_safe, consumidor_desativadas_path(current_user.id), :class => side_link?(consumidor_desativadas_path(current_user.id))%>
                          </li>
                        </ul>
                    </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_110935) do
+ActiveRecord::Schema.define(version: 2023_10_27_125951) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -89,6 +89,15 @@ ActiveRecord::Schema.define(version: 2021_03_05_110935) do
     t.integer "queixa_id", null: false
   end
 
+  create_table "comparacaos", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "primeira_id"
+    t.integer "segunda_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_comparacaos_on_user_id"
+  end
+
   create_table "contactos", force: :cascade do |t|
     t.integer "user_id"
     t.integer "empresa_id"
@@ -147,6 +156,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_110935) do
     t.integer "user_id", null: false
     t.bigint "actor_id"
     t.string "notify_type", null: false
+    t.integer "target"
     t.string "target_type"
     t.bigint "target_id"
     t.string "second_target_type"
@@ -199,6 +209,9 @@ ActiveRecord::Schema.define(version: 2021_03_05_110935) do
     t.integer "novos_negocios"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "empresa_nome"
+    t.string "assunto_nome"
+    t.string "sentimento_nome"
     t.index ["assunto_id"], name: "index_queixas_on_assunto_id"
     t.index ["avaliacao_id"], name: "index_queixas_on_avaliacao_id"
     t.index ["empresa_id"], name: "index_queixas_on_empresa_id"
@@ -208,10 +221,9 @@ ActiveRecord::Schema.define(version: 2021_03_05_110935) do
   end
 
   create_table "searches", force: :cascade do |t|
-    t.string "nome"
+    t.string "descricao"
     t.string "empresa"
     t.string "assunto"
-    t.string "situacao"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -286,6 +298,7 @@ ActiveRecord::Schema.define(version: 2021_03_05_110935) do
   add_foreign_key "assuntos", "atividades"
   add_foreign_key "assuntos", "empresas"
   add_foreign_key "avaliacaos", "queixas"
+  add_foreign_key "comparacaos", "users"
   add_foreign_key "contactos", "empresas"
   add_foreign_key "contactos", "users"
   add_foreign_key "empresas", "atividades"

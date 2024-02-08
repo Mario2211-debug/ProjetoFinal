@@ -22,6 +22,7 @@ private
    @ranking = @empresa.total
      end
 
+
 private
 def authorize
   redirect_to alogin_path, alert: 'Você deve estar logado paraacessar essa pagina.' if current_admin.nil?

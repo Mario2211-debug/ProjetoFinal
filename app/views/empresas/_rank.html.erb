@@ -1,13 +1,12 @@
-<div class="uk-width-expand">
-    <div class="card-suggestion_wrapper sidebar-absolute " style="">
+
       <div class="card">
                   <div class="card-body">
-                        <h4 class="card-title">Reputação<span id='total'><%=@empresa.total.round(1)%></span></h4>
+                        <h4 class="card-title">Reputação <span id='total'><%=@empresa.rank.round(1)%></span></h4>
                       <div class="row">
                         <div class="col-12 mt-4">
                           <div class="d-flex justify-content-between">
                       <h6>Respostas</h6>
-                <span><%=number_to_percentage(@empresa.indiceR)%></span>
+                <span><%=number_to_percentage(@empresa.indiceR,  precision:1)%></span>
               </div>
           <div class="progress">
           <div class="progress-bar bg-primary" id='current-price' style="width: <%=number_to_percentage(@empresa.indiceR)%>"></div>
@@ -16,7 +15,7 @@
         <div class="col-12 mt-4">
         <div class="d-flex justify-content-between">
         <h6>Soluções</h6>
-        <span><%=number_to_percentage(@empresa.indiceS)%></span>  </div>
+        <span><%=number_to_percentage(@empresa.indiceS, precision:1)%></span>  </div>
                 <div class="progress">
       <div class="progress-bar bg-success" id='current-price' style="width:<%=number_to_percentage(@empresa.indiceS)%>"></div>
       </div>
@@ -24,7 +23,7 @@
       <div class="col-12 mt-4">
       <div class="d-flex justify-content-between">
         <h6>Sem respostas</h6>
-      <span><%=number_to_percentage(@empresa.indiceSR)%></span>
+      <span><%=number_to_percentage(@empresa.indiceSR,  precision:1)%></span>
   </div>
   <div class="progress">
   <div class="progress-bar bg-info" id='current-price' style="width:<%=number_to_percentage(@empresa.indiceSR)%>"></div>
@@ -33,7 +32,7 @@
   <div class="col-12 mt-4">
   <div class="d-flex justify-content-between">
     <h6>Novos Negócios</h6>
-  <span><%=number_to_percentage(@empresa.indiceNN)%></span>
+  <span><%=number_to_percentage(@empresa.indiceNN,  precision:1)%></span>
     </div>
   <div class="progress">
   <div class="progress-bar bg-warning" id='current-price' style="width: <%=number_to_percentage(@empresa.indiceNN)%>"></div>
@@ -42,5 +41,3 @@
     </div>
                                                                                                                                                     </div>
         </div>
-            </div>
-      </div>

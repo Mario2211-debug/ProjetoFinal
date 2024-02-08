@@ -22,7 +22,7 @@ module Admin::SessionsHelper
      end
     # Logs in the given user.
     def alogged_in?
-       !current_admin.nil?
+       #{}!current_admin.nil?
      end
 
      # Logs out the current user.

@@ -15,8 +15,10 @@
                       </div>
                   <div class="col-lg-7 grid-margin pr-0">
                   <h5 style="margin-bottom:0px; margin-top:20px;">Descrição</h5>
+                  <br>
                   <%= @queixa.descricao%>
                   <h5 style="margin-bottom:0px; margin-top:20px;">Réplica do vendedor</h5>
+                  <br>
                   <div class="alert alert-danger alert-dismissible fade show">
                     <%if @queixa.replica.nil?%>
 
@@ -27,6 +29,7 @@
                   <%if @queixa.replica.nil?%>
                   <% else %>
                   <h5 style="margin-bottom:0px; margin-top:20px;">Mensagem de avaliação</h5>
+                  <br>
                   <div class="alert alert-warning alert-dismissible fade show">
                     <%if @queixa.mensagem.nil?%>
                     <%else%>

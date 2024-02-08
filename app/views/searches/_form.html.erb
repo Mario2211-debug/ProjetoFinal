@@ -5,45 +5,24 @@
               <div class="grid search">
                 <div class="grid-body">
                   <div class="row">
-                    <!-- BEGIN FILTERS -->
-                    <%= form_with model: @busca do |f| %>
-                    <!-- BEGIN SEARCH INPUT -->
-                    <div class="input-group">
-                      <%= f.text_field :descricao, :placeholder => 'Digite alguma coisa', class:'form-control'%>
-                      <span class="input-group-btn">
-                        <%= f.submit "Procurar", class:'btn btn-primary' do %>
-                        <i class="fa fa-search"></i>
-                        <% end %>
-                      </span>
+
+                    <div class="head_search">
+                      <%= form_with model: @busca do |f| %>
+                      <div class = "head_search_cont" aria-expanded = "false">
+                              <%= f.text_field :descricao, :placeholder => 'Digite alguma coisa', class:'form-control'%>
+                              <i class="s_icon uil-search-alt"></i>
+                            </div>
                     </div>
+                    <%= f.submit "Procurar" %>
+                    <%end%>
+
+                    <!-- BEGIN FILTERS -->
+                            </div>
                     <!-- END SEARCH INPUT -->
                     <div class="col-md-3">
                       <h2 class="grid-title"><i class="fa fa-filter"></i> Filtros</h2>
                       <hr>
-                      <!-- BEGIN FILTER BY CATEGORY -->
-                      <h4>Por Empresas:</h4>
-                      <div class="checkbox">
-                  <br>      <%= f.collection_check_boxes(:empresa, Empresa.where(situacao_id:6), :id, :nome, {:class => 'custom-control-label'}) %> <br>
-                      </div>
 
-                      <!-- END FILTER BY CATEGORY -->
-                      <div class="padding"></div>
-                      <h4>Por Assunto:</h4>
-                      <div class="checkbox">
-                              <%= f.collection_check_boxes(:empresa, Assunto.all, :id, :nome)%>
-
-                      </div>
-                      <% end %>
-
-                      <!-- BEGIN FILTER BY DATE -->
-                      <div class="padding"></div>
-
-                    </div>
-                    <!-- END FILTERS -->
-                  </div>
-                </div>
-              </div>
-            </div>
             <!-- BEGIN RESULT -->
             <div class="col-md-9">
               <h2><i class="fa fa-file-o"></i> Resultado</h2>

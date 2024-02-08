@@ -285,8 +285,7 @@ height: 42px !important;
 
 
 
-li .prev .previous_page .disable li !important{
-
+li .prev .previous_page .disable li {
 padding-right: 4px;
 padding-left: 4px;
 padding-right: 4px;
@@ -305,4 +304,43 @@ padding-right: 4px;
   min-height: 100vh;
   /*background-color: #f1f5f8;*/
   padding: 0 22px 2.5rem;
+}
+
+
+
+
+.section {
+  
+    padding-left: 140px;
+    left: 50%
+}
+
+.shadow,
+.subscription-wrapper {
+    box-shadow: 0px 15px 39px 0px rgba(8, 18, 109, 0.1) !important
+}
+
+.text-dark {
+    color: #242f3e !important
+}
+
+p,
+.paragraph {
+    font-weight: 400;
+    color: #8b8e93;
+    font-size: 15px;
+    line-height: 1.6;
+    font-family: "Open Sans", sans-serif
+}
+
+.icon-primary {
+    color: #062caf
+}
+
+li {
+    line-height: 1.6;
+    font-family: "Open Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    color: #8b8e93
 }

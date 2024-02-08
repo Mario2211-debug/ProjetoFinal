@@ -5,7 +5,6 @@ class QueixasController < ApplicationController
   def index
     # @queixas = Queixa.paginate(page: params[:page], per_page: 4).reverse
     @queixas =  Queixa.all.limit(3).order("created_at DESC")
-
    end
 
 #  def index
@@ -30,7 +29,7 @@ end
     @assunto =  Assunto.all
     @sentimento = Sentimento.all
   end
-
+=begin
   def novos_negociosS
     @queixa = Queixa.find(params[:id])
     @queixa.update!(novos_negocios:"Sim")
@@ -42,17 +41,17 @@ end
     @queixa.update!(novos_negocios:"Não")
     redirect_to(empresas_path)
   end
-
+=end
   def create
 #@queixa = Queixa.new(queixa_params)
 @queixa = current_user.queixas.build(queixa_params)
     #@queixa.build_empresa
     # Saving all stuff
     if @queixa .save
-      redirect_to root_path, notice: 'Agradeço e espero poder ajudar!'
+      redirect_to user_path(current_user), notice: 'Agradeço e espero poder ajudar!'
     else
       @feed_items = []
-      redirect_to root_path
+      redirect_to user_path(current_user)
     end
   end
 
@@ -81,7 +80,7 @@ end
   end
 
   def update_params
-    params.require(:queixa).permit(:sentimento_id, :avaliacao_id, :situacao_id, :mensagem)
+    params.require(:queixa).permit(:sentimento_id, :avaliacao_id, :situacao_id, :mensagem, :novos_negocios)
   end
 
 

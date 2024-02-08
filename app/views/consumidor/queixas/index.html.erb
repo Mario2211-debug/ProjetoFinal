@@ -39,7 +39,7 @@
                 <td><%= q.titulo%></td>
                 <td><%= q.empresa.nome%></td>
                 <td><%= q.assunto.nome%></td>
-                <td><%= q.created_at%></td>
+                <td><%= time_ago_in_words(q.updated_at) %></td>
                 <td><%= q.sentimento.nome%></td>
                 <td><%if q.situacao_id == 1%>
                     <div class="badge badge-outline-success">

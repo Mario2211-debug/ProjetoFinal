@@ -1,16 +1,15 @@
 class Queixa < ApplicationRecord
   self.table_name = 'queixas'
-
-    self.inheritance_column = "not_sti"
+  #  self.inheritance_column = "not_sti"
+    broadcasts_to -> (queixa) {:queixas}
 
 #searchkick word_start: [:descricao, :titulo, :assunto_id, :empresa_id]
+  after_commit :total, on:[:create, :destroy, :update]
   after_commit :create_notifications, on: [:create]
 #after_create_commit ->(queixa) { broadcast_append_to :empresa, partial: "empresas/queixas" }
 #after_update_commit ->(queixa) { broadcast_replace_to :empresa, partial: "empresas/queixas" }
 #after_destroy_commit ->(queixa) { broadcast_remove_to :empresa, partial: "empresas/queixas"}
-  broadcasts_to -> (queixa) {:queixas}
 
-after_create :total
 
   belongs_to :assunto, optional: true
   belongs_to :sentimento, optional: true
@@ -33,7 +32,7 @@ after_create :total
   end
 =end
 
-private
+public
    def create_notifications
      Notification.create do |notificacao|
       notificacao.notify_type =  'queixa'
@@ -59,6 +58,14 @@ private
   #      end
   #  end
 
+  def omin_search
+      queixa = Queixa.all
+      queixa = queixa.where(['lower(descricao) LIKE ? OR lower(titulo) LIKE ? OR lower(empresa_nome) LIKE ? OR lower(assunto_nome) LIKE ? OR lower(sentimento_nome) LIKE ?', descricao, descricao, descricao, descricao, descricao]) if descricao.present?
+      #queixa = queixa.where(['empresa_nome LIKE ?', descricao]) if descricao.present?
+    #  queixa = queixa.where(['assunto_id LIKE ?', assunto]) if assunto.present?
+    #  queixa = queixa.where(['lower(titulo) LIKE ?', titulo]) if titulo.present?
+      return queixa
+  end
 
   #def self.search(titulo, descricao, empresa, assunto)
 #return scoped unless titulo.present? || descricao.present? || empresa.present? || assunto.present?
@@ -66,84 +73,44 @@ private
   #end
 
   def ava
-  @ava = (empresa.votos.count)
+    @ava = empresa.votos.count
   end
 
   def indiceR
-    @queixas =  queixas.count
-  @indiceR =  (queixas.where.not(replica:nil).count).fdiv(@queixas)*100
+    @queixas = queixas.count
+    @indiceR = (queixas.where.not(replica: nil).count).fdiv(@queixas) * 100
   end
 
   def indiceS
-    @queixas =  queixas.count
-  @indiceS = (queixas.where(situacao_id:1).count).fdiv(@queixas)*100
+    @queixas = queixas.count
+    @indiceS = (queixas.where(situacao_id: 1).count).fdiv(@queixas) * 100
   end
 
   def indiceSR
-    @queixas =  queixas.count
-  @indiceS = (queixas.where(replica:nil).count).fdiv(@queixas)*100
-
+    @queixas = queixas.count
+    @indiceS = (queixas.where(replica: nil).count).fdiv(@queixas) * 100
   end
 
   def indiceNN
-    @queixas =  queixas.count
-  @indiceNN = (queixas.where(novos_negocios:"Sim").count).fdiv(@queixas)
+    @queixas = queixas.count
+    @indiceNN = (queixas.where(novos_negocios: "Sim").count).fdiv(@queixas) * 100
   end
 
-    def indiceNR
-      @queixas =  queixas.count
-    @indiceR =  (queixas.where(replica:nil).count).fdiv(@queixas)*100
-    end
-
-    def total
-  if empresa.votos.count == 0
-    @ava = 0
-  else
-    @ava = (empresa.votos.count)
+  def indiceNR
+    @queixas = queixas.count
+    @indiceR = (queixas.where(replica: nil).count).fdiv(@queixas) * 100
   end
 
-  if empresa.queixas.count == 0
-    @queixas = 0
-  else
-    @queixas =  empresa.queixas.count
+  def total
+    @ava = empresa.votos.count
+    @queixas = empresa.queixas.count
+
+    @indiceR = ((empresa.queixas.where.not(replica: nil).count).fdiv(@queixas) * 100).to_f
+    @indiceNN = ((empresa.queixas.where(novos_negocios: "Sim").count).fdiv(@queixas) * 100).to_f
+    @indiceS = ((empresa.queixas.where(situacao_id: 1).count).fdiv(@queixas) * 100).to_f
+
+    @total = (((@indiceR * 2) + (@ava * 10 * 3) + (@indiceS * 3) + (@indiceNN * 2)).fdiv(100)).to_f
+    empresa.update!(rank: @total)
   end
-
-  if  empresa.queixas.where.not(replica:nil).count == 0
-    @indiceR = 0
-  else
-    @indiceR =  ((empresa.queixas.where.not(replica:nil).count).fdiv(@queixas)*100).to_f
-  end
-
-  if empresa.queixas.where(novos_negocios:"Sim").count == 0
-    @indiceNN = 0
-  else
-    @indiceNN = ((empresa.queixas.where(novos_negocios:"Sim").count).fdiv(@queixas)*100).to_f
-  end
-
-  if empresa.queixas.where(situacao_id: 1).count == 0
-    @indiceS =  0
-  else
-    @indiceS =  ((empresa.queixas.where(situacao_id: 1).count).fdiv(@queixas)*100).to_f
-  end
-
-  #  @ava = (votos.count)
-  #  @queixas =  queixas.count
-  #  @indiceR =  ((queixas.where.not(replica:nil).count).fdiv(@queixas)*100).to_f
-  #  @indiceNN = ((queixas.where(novos_negocios:"Sim").count).fdiv(@queixas)*100).to_f
-  #  @indiceS =  ((queixas.where(situacao_id: 1).count).fdiv(@queixas)*100).to_f
-   @total =  (((@indiceR*2)+(@ava*10*3)+(@indiceS*3)+(@indiceNN*2)).fdiv(100))
-   empresa.update!(rank:@total)
-    end
-
-
-
-#def resolvida
-#Queixa.where('updated_at > ?', 24.hours.ago)
-#end
-
-#def sem_resposta
-#  Queixa.where(replica: nil)
-#end
-
 
 end

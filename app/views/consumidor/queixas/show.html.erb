@@ -1,6 +1,5 @@
 
-                          <div class="row" data-product-id="<%= @queixa.id %>">
-                            <div class="col-lg-12 grid-margin stretch-card">
+                          <div class="col-lg-8" data-product-id="<%= @queixa.id %>">
                           <div class="card">
                           <div class="card-body">
 <h4 class="card-title"><h2>Reclamação - <%=link_to @queixa.empresa.nome, empresa_path(@queixa.empresa)%></h2>
@@ -69,7 +68,6 @@
 </div>
 <%= link_to "Avaliar", edit_consumidor_queixa_path(current_user.id, @queixa.id), class:'btn btn-primary mb-2'%>
 <% end %>
-</div>
 </div>
 </div>
 </div>

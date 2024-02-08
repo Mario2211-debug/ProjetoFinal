@@ -26,8 +26,6 @@
   }
 
 
-
-
   @font-face {
     font-family: 'Brand-Icons';
     src:
@@ -1684,7 +1682,6 @@
 
   .icon-feather-bookmark:before {
     content: "\e924";
-    color:;
   }
 
   .icon-feather-box:before {
@@ -3075,7 +3072,12 @@
     content: "\e968";
   }
 
-  .icon-material-outline-message-(1):before {
+  /*
+    .icon-material-outline-message-(1):before {
+      content: "\e969";
+    }
+  */
+  .icon-material-outline-message:before {
     content: "\e969";
   }
 

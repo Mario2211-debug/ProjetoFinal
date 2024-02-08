@@ -20,7 +20,7 @@
                 <%@users.each do |user|%>
                 <tr>
                 <td>
-                    <img src="assets/images/faces/face1.jpg" alt="image" />
+                  <%=image_tag user.displayed_image, loading: "lazy", alt:user.nome, class:"img-xs rounded-circle", width:"150"%>
                     <span class="pl-2"><%=link_to user.nome, admin_user_path(current_admin, user)%></span>
                   </td>
                   <td> <%= user.email%>  </td>

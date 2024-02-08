@@ -39,7 +39,7 @@ def finalizadas
 end
 
 def desativadas
-  @queixas = current_empresa.queixas.where.not(replica:!nil)
+  @QD = current_empresa.queixas.where.not(replica:!nil)
 end
 
 

@@ -31,9 +31,9 @@
   @font-face {
     font-family: 'Brand-Icons';
     src:
-      url('/fonts/Brand-Icons.ttf?blcw31') format('truetype'),
-      url('/fonts/Brand-Icons.woff?blcw31') format('woff'),
-      url('/fonts/Brand-Icons.svg?blcw31#Brand-Icons') format('svg');
+      url('../../fonts/Brand-Icons.ttf'),
+      url('../../fonts/Brand-Icons.woff'),
+      url('../../fonts/Brand-Icons.svg');
     font-weight: normal;
     font-style: normal;
   }
@@ -1508,19 +1508,25 @@
 
 
 
-  /*!
+  /*
  * Feather Icons (https://feathericons.com/)
  * Licensed under MIT
  */
   @font-face {
     font-family: 'Feather-Icons';
     src:
-      url('../Feather-Icons.ttf?7ncawf') format('truetype'),
-      url('../Feather-Icons.woff?7ncawf') format('woff'),
-      url('../Feather-Icons.svg?7ncawf#Feather-Icons') format('svg');
+      url('../../fonts/Feather-Icons.ttf'),
+      url('../../fonts/Feather-Icons.woff') format('woff'),
+      url('../../fonts/Feather-Icons.svg') format('svg');
     font-weight: normal;
     font-style: normal;
+    @font-face {
+      font-family: 'Assistant-Ligth';
+        src: url('../../fonts/Assistant-Light.ttf');
+    }
   }
+
+  
 
   [class^="icon-feather-"],
   [class*=" icon-feather-"] {
@@ -1684,7 +1690,6 @@
 
   .icon-feather-bookmark:before {
     content: "\e924";
-    color:;
   }
 
   .icon-feather-box:before {
@@ -2612,13 +2617,14 @@
   @font-face {
     font-family: 'Material-Icons';
     src:
-      url('../fonts/Material-Icons.ttf?e8u1sb') format('truetype'),
-      url('../fonts/Material-Icons.woff?e8u1sb') format('woff'),
-      url('../fonts/Material-Icons.svg?e8u1sb#Material-Icons') format('svg');
+      url('/fonts/Material-Icons.ttf') format('truetype'),
+      url('/fonts/Material-Icons.woff') format('woff'),
+      url('/fonts/Material-Icons.svg') format('svg');
     font-weight: normal;
     font-style: normal;
   }
 
+  
   [class^="icon-material-"],
   [class*=" icon-material-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
@@ -3075,7 +3081,13 @@
     content: "\e968";
   }
 
-  .icon-material-outline-message-(1):before {
+
+  /*
+    .icon-material-outline-message-(1):before {
+      content: "\e969";
+    }
+  */
+  .icon-material-outline-message:before {
     content: "\e969";
   }
 
@@ -3264,9 +3276,9 @@
   @font-face {
     font-family: 'Line-Awesome';
     src:
-      url('../fonts/Line-Awesome.ttf?15lwq9') format('truetype'),
-      url('../fonts/Line-Awesome.woff?15lwq9') format('woff'),
-      url('../fonts/Line-Awesome.svg?15lwq9#Line-Awesome') format('svg');
+      url('../../fonts/line-Awesome.ttf') format('truetype'),
+      url('../../fonts/line-awesome.woff') format('woff'),
+      url('../../fonts/lne-Awesome.svg?15lwq9#Line-Awesome') format('svg');
     font-weight: normal;
     font-style: normal;
   }
@@ -5926,13 +5938,12 @@
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
-    src: url(../fonts/MaterialIcons-Regular.eot);
     /* For IE6-8 */
     src: local('Material Icons'),
       local('MaterialIcons-Regular'),
-      url(../MaterialIcons-Regular.woff2) format('woff2'),
-      url(../MaterialIcons-Regular.woff) format('woff'),
-      url(../MaterialIcons-Regular.ttf) format('truetype');
+      url('../MaterialIcons-Regular.woff2') format('woff2'),
+      url('../MaterialIcons-Regular.woff') format('woff'),
+      url('../MaterialIcons-Regular.ttf') format('truetype');
   }
 
 
@@ -5977,11 +5988,10 @@
 
   @font-face {
     font-family: 'unicons';
-    src: url('../unicons.eot');
-    src: url('../unicons.eot') format('embedded-opentype'),
-         url('../unicons.woff') format('woff'),
-         url('../unicons.ttf') format('truetype'),
-         url('../unicons.svg') format('svg');
+    src: url('/app/assets/fonts/unicons.eot');
+    src: url('../../fonts/unicons.woff2'),
+         url('/app/assets/fonts/unicons.ttf'),
+         url('../../fonts/unicons.svg') format('svg');
     font-weight: normal;
     font-style: normal;
   }

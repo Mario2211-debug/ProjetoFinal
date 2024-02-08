@@ -14,13 +14,22 @@
 <%=render 'layouts/consumidor/sidebar'%>
 <%=render 'layouts/consumidor/navbar'%>
 <%=render 'layouts/consumidor/header'%>
+
 <% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, id: "flash_#{name}" %>
+  <%= content_tag :div, msg, class: "alert alert-#{name} alert-dismissible fade show"%>
 <% end %>
 
+
+<div class="main_content_inner">
+    <div class="section-small">
+      <div uk-grid="" class="uk-grid">
 <%= yield %>
        </div>
      </div>
+   </div>
+ </div>
+</div>
+
          </body>
   </html>
 

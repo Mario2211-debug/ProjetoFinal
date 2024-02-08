@@ -18,6 +18,11 @@ class Consumidor::QueixasController < ApplicationController
 #empresa = @queixa.empresa_id
 @queixa.ordem.user = @queixa.user
 @queixa.ordem.empresa = @queixa.user.empresa_id
+@queixa.empresa_nome = @queixa.empresa.nome
+@queixa.assunto_nome = @queixa.assunto.nome
+@queixa.sentimento_nome = @queixa.sentimento.nome
+
+
     if @queixa.save
 redirect_to consumidor_index_path
 
@@ -59,7 +64,7 @@ end
    #  @user = User.find(params[:id])
  #add_empresa = Addempresa.find_by_id(params[:id])
  @queixa = Queixa.find(params[:id])
-     if @queixa.update_attributes(resposta_params)
+     if @queixa.update(resposta_params)
        flash[:success] = "Respondido"
         redirect_back_or  consumidor_index_path(current_user.id, @queixa.id)
    else
@@ -69,12 +74,12 @@ end
 
 private
     def resposta_params
-      params.require(:queixa).permit(:mensagem, :situacao_id, :sentimento_id)
+      params.require(:queixa).permit(:mensagem, :situacao_id, :sentimento_id, :novos_negocios)
     end
 
  private
  def queixa_params
-   params.require(:queixa).permit(:sentimento_id, :avaliacao_id, :empresa_id, :situacao_id, :assunto_id, :titulo, :descricao,
+   params.require(:queixa).permit(:sentimento_id, :avaliacao_id, :empresa_id, :empresa_nome, :assunto_nome, :sentimento_nome, :situacao_id, :assunto_id, :titulo, :descricao,
       ordem_attributes: [:numero, :user_id, :empresa_id, :queixa_id,  file: []])
  end
 

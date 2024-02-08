@@ -1,6 +1,4 @@
-
                    <div class="main_content-inner">
-
                    <div class="profile"  style="background-color:transparent;">
                    <div class="nav-profile uk-sticky" uk-sticky="media : @s" style="">
                                          <!-- Logo-->
@@ -13,6 +11,42 @@
                                              <span class="btn-close" uk-toggle="target: #wrapper; cls: collapse-sidebar mobile-visible"></span>
                                          </div>
                                            <div class="py-md-2 uk-flex-last">
+                                             <a href="#" class="button light button-icon mr-lg-3" aria-expanded="false"> <i class="uil-list-ul"> </i> </a>
+                                           <div uk-dropdown="pos: bottom-left ; mode:hover" class="display-hidden uk-dropdown">
+                                               <ul class="uk-nav uk-dropdown-nav">
+                                                 <li><%=link_to 'Ranking', ranking_path%></li>
+                                                 <!-- dropdown link  -->
+                                                      <li>
+                                                        <a href="#" class="opts_icon" uk-tooltip="title: Categorias ; pos: bottom ;offset:7" title="" aria-expanded="false">Categorias</a></li>
+                                                                      <!-- dropdown -->
+                                                                     <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small" class="uk-dropdown uk-dropdown-bottom-left" style="min-width:320px; z-index:1; top:80.5px;">
+                                                                   <!-- dropdown contents -->
+                                                                     <div class="dropdown-notifications-content" data-simplebar="init">
+                                                                     <div class="simplebar-wrapper" style="margin: 0px;">
+                                                                     <div class="simplebar-mask">
+                                                                     <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                                                     <div class="simplebar-content" style="padding: 0px; height: auto; overflow: hidden;">
+                                                                 <!-- dropdown list -->
+                                                                     <ul class="uk-nav uk-dropdown-nav">
+                                                                     <% Atividade.all.each do |f| %>
+                                                                     <li style="display:flex">
+                                                                        <a src=""><%= f.nome%></a>
+                                                                      </li>
+                                                                   <% end %>
+                                                                   <li><% link_to 'Ver mais...', categoria_path %></li>
+                                                                     </ul>
+                                                                     </div>
+                                                                     </div>
+                                                                   </div>
+                                                                   <div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div>
+                                                                     </div>
+                                                                      </div>
+                                                                       </div>
+                                                 <li><%=link_to 'Empresas', empresas_path, :class => tab_link?(empresas_path)%></li>
+                                                 <li><%=link_to 'Compare', new_comparacao_path%></li>
+                                                 <li><%=link_to 'Sobre', empresas_path%></li>
+                                               </ul>
+                                           </div>
                                                <a class="button primary mr-2" <%=link_to 'Faça uma reclamação', new_consumidor_queixa_path(current_user.id)%>
                                                  <!-- user icons -->
                                                <div class="head_user">
@@ -67,23 +101,46 @@
 
 
                                                </div>
-
                                            </div>
-
                                            <div>
-                                               <nav class="responsive-tab ml-lg-3">
+                                               <nav class="responsive-tab is-hidden ml-lg-3">
                                                    <ul>
-                                                       <li><%=link_to 'Ranking', ranking_path, class:"uk-active"%></li>
-                                                       <li><%=link_to 'Categoria', categoria_path, class:"uk-active"%></li>
-                                                       <li><%=link_to 'Empresas', empresas_path, class:"uk-active"%></li>
-                                                       <li><%=link_to 'Sobre', empresas_path, class:"uk-active"%></li>
-                                                       <li><%=link_to 'Solicitar cadastro', new_empresa_path, class:"uk-active"%></li>
-                                                      <li><%= select_tag "atividade_id", options_from_collection_for_select(Atividade.all, "id", "nome") %></li>
-
+                                                       <li><%=link_to 'Ranking', ranking_path, :class => tab_link?(ranking_path)%></li>
+                                                       <!-- dropdown link  -->
+                                                            <li>
+                                                              <a href="#" class="opts_icon" uk-tooltip="title: Categorias ; pos: bottom ;offset:7" title="" aria-expanded="false">Categorias</a></li>
+                                                                            <!-- dropdown -->
+                                                                           <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small" class="uk-dropdown uk-dropdown-bottom-left" style="min-width:320px; z-index:1; top:80.5px;">
+                                                                         <!-- dropdown contents -->
+                                                                           <div class="dropdown-notifications-content" data-simplebar="init">
+                                                                           <div class="simplebar-wrapper" style="margin: 0px;">
+                                                                           <div class="simplebar-mask">
+                                                                           <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                                                           <div class="simplebar-content" style="padding: 0px; height: auto; overflow: hidden;">
+                                                                       <!-- dropdown list -->
+                                                                           <ul class="uk-nav uk-dropdown-nav">
+                                                                           <% Atividade.all.each do |f| %>
+                                                                           <li style="display:flex">
+                                                                              <a src=""><%= f.nome%></a>
+                                                                            </li>
+                                                                         <% end %>
+                                                                         <li><% link_to 'Ver mais...', categoria_path %></li>
+                                                                           </ul>
+                                                                           </div>
+                                                                           </div>
+                                                                         </div>
+                                                                         <div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div>
+                                                                           </div>
+                                                                            </div>
+                                                                             </div>
+                                                       <li><%=link_to 'Empresas', empresas_path, :class => tab_link?(empresas_path)%></li>
+                                                       <li><%=link_to 'Compare', new_comparacao_path, :class => tab_link?(new_comparacao_path)%></li>
+                                                       <li><%=link_to 'Sobre', empresas_path, :class => tab_link?(empresas_path)%></li>
                                                   </ul>
                                                </nav>
                                          </div>
                    </div>
+
                   <div class="uk-sticky-placeholder" style="height: 107px; margin: 0px 0px 10px;" hidden=""></div>
 
                                    </div>

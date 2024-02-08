@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'player_search/index'
   mount Notifications::Engine => "/notifications", :as => :notifications
 
   mount ActionCable.server => '/cable'
@@ -7,8 +8,8 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'users/new'
   get 'signup'  => 'users#new'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
+  get 'login'   => 'sessions#new'
+  post 'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
 
@@ -16,10 +17,12 @@ Rails.application.routes.draw do
   root 'home#home'
 get '/search' => 'searches#search', :as => 'search_page'
   resources :searches
+  resources :comparacaos
 
       get '/ranking' => 'home#ranking', :as => 'ranking'
       get '/categoria' => 'home#categoria', :as => 'categoria'
-
+  #    get '/compare' => 'home#compare', :as => 'compare'
+  #    post '/compare' => 'home#new_compare'
   #addempresas 'addempresas#index'
   #resources :perfil_empresarials
   resources :queixas, :controller => 'queixas'
@@ -48,6 +51,7 @@ get '/search' => 'searches#search', :as => 'search_page'
       resources :queixas, :controller => 'fornecedor/queixas'
       end
     end
+resources :empresa_search, only: [:index]
 
     resources :consumidor do
       resources :perfil_empresarials, :controller => 'consumidor/perfil_empresarials' do

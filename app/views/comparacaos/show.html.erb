@@ -1,0 +1,101 @@
+
+<h2>Create New comparacao</h2>
+
+<%=form_with model: @compare do |f| %>
+
+<%= f.label :primeira_id, "Empresa 2"%>
+<%= f.collection_select :primeira_id, @empresa, :id, :nome %><br>
+  <%= f.label :segunda_id, "Empresa 1"%>
+  <%= f.collection_select :segunda_id, @empresa, :id, :nome %><br>
+
+  <%= f.submit %>
+<% end %>
+
+<br><br>
+
+
+
+  <div class="container-fluid">
+      <div class="table-responsive">
+          <table class="table verticle-middle table-responsive-md">
+              <thead>
+                  <tr class="simple-head">
+                      <th width="20%">
+                          <div class="bg-white h-100 w-100"> </div>
+                      </th>
+                      <th width="20%">
+                          <div class="mb-2">
+                              <div class="d-flex justify-content-between align-items-center">
+                                <%=image_tag @comp.primeira.displayed_image, loading: "lazy", alt:@comp.primeira.nome%>
+                                  <span class="d-block text-custom-truncate ml-1"><%=@comp.primeira.nome%>, <%=@comp.primeira.atividade.nome%></span> </div>
+                              <hr>
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <h6 class="mb-0">Rank: <%=@comp.primeira.rank%></h6> <button class="btn btn-sm btn-primary">Add to cart</button>
+                              </div>
+                          </div>
+                      </th>
+                      <th width="20%">
+                          <div class="mb-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <%=image_tag @comp.segunda.displayed_image, loading: "lazy", alt:@comp.segunda.nome%>
+                                <span class="d-block text-custom-truncate ml-1"><%=@comp.segunda.nome%>, <%=@comp.segunda.atividade.nome%></span> </div>
+                              <hr>
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <h6 class="mb-0">Rank:<%=@comp.segunda.rank%> </h6> <button class="btn btn-sm btn-primary">Add to cart</button>
+                              </div>
+                          </div>
+                      </th>
+
+                  </tr>
+              </thead>
+
+
+              <tbody>
+                  <tr>
+                      <th scope="row">Ramo de Atividade</th>
+                      <td class="base-item"><%=@comp.primeira.atividade.nome%></td>
+                      <td><%=@comp.segunda.atividade.nome%></td>
+                  </tr>
+
+                  <tr>
+                      <th scope="row">Serviços da empresa</th>
+                      <td class="base-item"><%@comp.primeira.assuntos.each do |f|%><%=f.nome%><%end%></td>
+                      <td><%@comp.segunda.assuntos.each do |f|%><%=f.nome%><%end%></td>
+                  </tr>
+
+
+                  <tr>
+                      <th>Avaliação dos clientes</th>
+                      <td class="base-item"><%=@comp.primeira.ava%></td>
+                      <td><%=@comp.segunda.ava%></td>
+                    </tr>
+
+
+                  <tr>
+                      <th scope="row">Índice de solução</th>
+                      <td class="base-item"><%=@comp.primeira.indiceS%></td>
+                      <td><%=@comp.segunda.indiceS%></td>
+                  </tr>
+
+                  <tr>
+                      <th>índice de Respostas</th>
+                      <td class="base-item"><%=@comp.primeira.indiceR%></td>
+                      <td><%=@comp.segunda.indiceR%></td>
+                    </tr>
+
+                    <tr>
+                        <th>Índice sem respostas</th>
+                        <td class="base-item"><%=@comp.primeira.indiceSR%></td>
+                        <td><%=@comp.segunda.indiceSR%></td>
+                      </tr>
+
+                      <tr>
+                          <th>Índice de novos negócios</th>
+                          <td class="base-item"><%=@comp.primeira.indiceNN%></td>
+                          <td><%=@comp.segunda.indiceNN%></td>
+                        </tr>
+
+              </tbody>
+          </table>
+      </div>
+  </div>

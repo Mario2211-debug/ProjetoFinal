@@ -1,0 +1,28 @@
+
+<h2>Faça uma comparação</h2>
+
+<div class="uk-grid">
+
+  <div class="login-clean" style="height: 962px;">
+  <%=form_with model: @compare do |f| %>
+  <div class="form-row">
+    <div class="col-xl-4">
+    <div class="form-group" style="width: auto;margin-bottom: 18px;margin-top: 4px;">
+    <%= f.label :segunda_id, class:'mb-0', for:'float-textarea', style:'height: 28px;font-size: 16px;width: 117px;margin-top: 0px;margin-bottom: 0px;padding-top: 0px;padding-left: -35px;'%>
+    <%= f.collection_select :segunda_id, @empresa, :id, :nome,  {:prompt=> 'Por favor selecione o assunto' }, {:class =>'form-control',  style:'background-color: rgb(223,226,231);'} %><br>
+  </div>
+</div>
+
+
+  <div class="col-xl-4">
+  <div class="form-group" style="width: auto;margin-bottom: 18px;margin-top: 4px;">
+<%= f.label :primeira_id, class:'mb-0', for:'float-textarea', style:'height: 28px;font-size: 16px;width: 117px;margin-top: 0px;margin-bottom: 0px;padding-top: 0px;padding-left: -35px;'%>
+<%= f.collection_select :primeira_id, @empresa, :id, :nome, {:prompt=> 'Por favor selecione o assunto' }, {:class =>'form-control',  style:'background-color: rgb(223,226,231);'} %><br>
+</div>
+</div>
+
+</div>
+<%= f.submit %>
+<% end %>
+</div>
+</div>

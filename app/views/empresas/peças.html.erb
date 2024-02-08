@@ -370,3 +370,79 @@
                                                                                   </div>
                                                                               </div>
                                                                           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                          <div class="profile">
+                                                                            <div class="profile-cover">
+                                                                              <div class="card-footer text-right border-0 mt-0"  style="font-size: 100%;">
+                                                                        <%if @empresa.rank.between?(0, 2.9)%>
+                                                                          <h3 class="mb-1 badge badge-rounded badge-danger"  style="font-size: 100%;">Péssima</h3>
+                                                                        <%end%>
+
+                                                                        <%if @empresa.rank.between?(3.0, 4.9)%>
+                                                                        <h3 class="mb-1 badge badge-rounded badge-danger light"  style="font-size: 100%;">Não recomendada</h3>
+                                                                        <%end%>
+
+                                                                        <%if  @empresa.rank.between?(5.0, 6.9)%>
+                                                                        <h3 class="mb-1 badge badge-rounded badge-warning light"  style="font-size: 100%;">Regular</h3>
+                                                                        <%end%>
+
+                                                                        <%if @empresa.rank.between?(7.0, 8.9)%>
+                                                                        <h3 class="mb-1 badge badge-rounded badge-success light"  style="font-size: 100%;">Boa</h3>
+                                                                        <%end%>
+
+                                                                        <%if @empresa.rank >= 9.0%>
+                                                                        <h3 class="mb-1 badge badge-roundedtext-gold light"  style="font-size: 100%;">Excelente</h3>
+                                                                        <%end%>
+                                                                        </div>
+                                                                            </div>
+                                                                            <div class="profile-details">
+                                                                                <div class="profile-image">
+                                                                                  <%=image_tag @empresa.displayed_image, loading: "lazy", alt:@empresa.nome%>
+                                                                                </div>
+                                                                                <div class="profile-details-info">
+                                                                                    <h1> <%=@empresa.nome  %> </h1>
+                                                                                    <p> <%=@empresa.atividade.nome%>, <%@empresa.assuntos.each do |f|%><%=f.nome.truncate(14)%> <%end%>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="nav-profile uk-sticky" uk-sticky="media : @s" style="border-top: 1px solid #eaeaea; justify-content: center;">
+
+                                                                                <div>
+                                                                                    <nav class="responsive-tab ml-lg-3" style="line-height: 58px;">
+                                                                                        <ul>
+                                                                                          <li><%=link_to 'Home'.html_safe, empresas_path(@empresa), style:'color: unset;', class:"active"%></li>
+                                                                                          <li><%=link_to 'Reclamações'.html_safe, empresas_path(@empresa), style:'color: unset;'%></li>
+                                                                                          <li><%=link_to 'Problemas'.html_safe, empresas_path(@empresa), style:'color: unset;'%></li>
+                                                                                          <li><%=link_to '<i class="fa fa-info"></i><span class="mob-text">Sobre</span>'.html_safe, empresas_path(@empresa), style:'color: unset;'%></li>
+                                                                                        </ul>
+                                                                                    </nav>
+                                                                                </div>
+                                                                            </div>
+                                                                                          </div>

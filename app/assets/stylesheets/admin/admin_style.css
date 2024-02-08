@@ -15481,29 +15481,32 @@ input:focus {
   outline: none; }
 
 /* Fonts */
+/*
 @font-face {
   font-family: 'Rubik';
   font-weight: 300;
   src: url("../fonts/Rubik/Rubik-Light.ttf");
-  /* IE9 Compat Modes */ }
+}
 
 @font-face {
   font-family: 'Rubik';
   font-weight: 400;
   src: url("../fonts/Rubik/Rubik-Regular.ttf");
-  /* IE9 Compat Modes */ }
+  }
 
 @font-face {
   font-family: 'Rubik';
   font-weight: 500;
   src: url("../fonts/Rubik/Rubik-Medium.ttf");
-  /* IE9 Compat Modes */ }
+ }
 
 @font-face {
   font-family: 'Rubik';
   font-weight: 700;
   src: url("../fonts/Rubik/Rubik-Bold.ttf");
-  /* IE9 Compat Modes */ }
+}
+*/
+
 
 /* Backgrounds  */
 .bg-gradient-primary {
@@ -15547,7 +15550,7 @@ body {
   font-weight: normal;
   font-weight: initial;
   line-height: 1.5;
-  font-family: "Rubik", sans-serif;
+  /*font-family: "Rubik", sans-serif;*/
   -webkit-font-smoothing: antialiased; }
 
 h1, h2, h3, h4, h5, h6,

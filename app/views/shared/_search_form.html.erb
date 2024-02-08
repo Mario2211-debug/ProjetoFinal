@@ -1,0 +1,10 @@
+<br>
+<p class="text-white">Pesquise sobre a empresa que deseja</p>
+<div class="head_search">
+  <%= form_with url: empresa_search_index_path, method: :get, data: { action: "ajax:success->live-search#handleResults", target: "live-search.form" } do |form| %>
+        <div class = "head_search_cont" aria-expanded = "false">
+          <%= form.text_field :search, data: { action: "input->live-search#search" }, autocomplete: "off" %>
+            <i class="s_icon uil-search-alt"></i>
+        </div>
+        <%end%>
+</div>

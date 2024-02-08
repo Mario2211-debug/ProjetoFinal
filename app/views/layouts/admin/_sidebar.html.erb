@@ -1,11 +1,15 @@
 
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="sidebar-brand brand-logo" href="<%=admin_index_path%>">
-            <img src=""></a>
-          <a class="sidebar-brand brand-logo-mini" href="<%=admin_index_path%>">
-            <img src=""></a>
+          <a class="sidebar-brand brand-logo"  style="font-size: x-large; font-family: ui-sans-serif; font-weight: bold;color: white;" href="<%=admin_index_path%>">Reclame!AO</a>
+
+          <a class="sidebar-brand brand-logo-mini" style="font-size: x-large; font-family: ui-sans-serif; font-weight: bold;color: white;" href="<%=admin_index_path%>">R!AO</a>
         </div>
+
+
+
+
+
         <ul class="nav">
           <li class="nav-item profile">
             <div class="profile-desc">
@@ -21,7 +25,7 @@
               </div>
               <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
               <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-                
+
                 <%=link_to '
                   <div class="preview-thumbnail">
                        <div class="preview-icon bg-dark rounded-circle">
@@ -104,8 +108,8 @@
             </a>
             <div class="collapse" id="ui-basic1">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" <%=link_to 'Solicitações de perfil', admin_perfil_empresarials_path(current_admin)%></li>
-                <li class="nav-item"> <a class="nav-link" <%=link_to 'Para adicionar empresas', admin_solicitacoes_path(current_admin)%></li>
+                <li class="nav-item"> <a class="nav-link" <%=link_to 'Solicitações de perfil', admin_solicitacoes_path(current_admin)%></li>
+                <li class="nav-item"> <a class="nav-link" <%=link_to 'Para adicionar empresas', admin_addempresas_path(current_admin)%></li>
               </ul>
             </div>
           </li>

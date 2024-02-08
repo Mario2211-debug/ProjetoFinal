@@ -56,23 +56,31 @@
 
                <!-- notiviation list -->
                <ul>
+                 <% Notification.where(user_id:current_user.id).each do |f| %>
                    <li>
-                       <a href="#">
+<%= link_to fornecedor_empresa_queixa_path(f.user.id, f.second_target_id, f.target_id) do  %>
                            <span class="notification-avatar">
                              <%=image_tag 'bg-form1.jpg'%>
                            </span>
                            <span class="notification-icon bg-gradient-primary">
                                <i class="icon-feather-thumbs-up"></i></span>
+
                            <span class="notification-text">
-                               <strong>Adrian Moh.</strong> Like Your Comment On Video
-                               <span class="text-primary">Learn Prototype Faster</span>
-                               <br> <span class="time-ago"> 9 hours ago </span>
+                             <span></span>
+                               <strong><%=f.actor.nome%></strong> reclamou sobre <%= f.target&.assunto.nome %>
+                               <span class="text-primary"><%=f.target.titulo%></span>
+                               <br> <span class="time-ago"> <td><%= time_ago_in_words(f.updated_at) %> atrás </span>
                            </span>
-                       </a>
+                         <% end %>
                    </li>
+   <% end %>
 
                </ul>
-
+               <div class="heading clearfix">
+                 <span class="pull-xs-left">
+                   <%= link_to t('notifications.clean_all'), fornecedor_index_path, class: 'btn btn-sm btn-secondary', method: 'delete' %>
+                 </span>
+               </div>
            </div></div></div><div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div></div>
            <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
              <div class="simplebar-scrollbar" style="transform: translate3d(0px, 0px, 0px); visibility: hidden;"></div></div>

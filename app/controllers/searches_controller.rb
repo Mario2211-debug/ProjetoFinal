@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
   def show
           @busca = Search.find(params[:id])
           total = @busca.search_queixa.joins(:empresa).count
-          @empresa = @busca.search_queixa.distinct.select(:empresa_id).map(&:empresa)
+          @resultados = @busca.search_queixa.distinct.select(:empresa_id).map(&:empresa)
       end
 
       def new
@@ -16,6 +16,12 @@ class SearchesController < ApplicationController
           redirect_to(@busca)
       end
 
+      def search
+        @busca = Search.find(params[:id])
+        total = @busca.search_queixa.joins(:empresa).count
+        @resultados = @busca.search_queixa.distinct.select(:empresa_id).map(&:empresa)
+        #  @resultado = Queixa.search(params[:search])
+      end
     #  def search
       #    @resultado = Queixa.search(params[:search])
     #   end
@@ -23,7 +29,7 @@ class SearchesController < ApplicationController
       private
 
       def search_params
-          params.require(:search).permit(:descricao, :empresa, :assunto)
+          params.require(:search).permit(:descricao, :titulo, :empresa_nome)
       end
 
 

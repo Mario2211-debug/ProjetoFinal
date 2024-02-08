@@ -9,23 +9,23 @@
                 <li class="mr-3"><small><%=r.atividade.nome%></small></li>
                 <li class="mr-3"><small><%=r.updated_at.strftime("%d %B %Y")%></small></li>
 
-                <%if r.total.between?(1, 2.9)%>
+                <%if r.rank.between?(1, 2.9)%>
                 <li class="ml-auto"><span class="badge badge-rounded badge-danger light font-w500">Péssima</span></li>
                 <%end%>
 
-                <%if r.total.between?(3.0, 4.9)%>
+                <%if r.rank.between?(3.0, 4.9)%>
                 <li class="ml-auto"><span class="badge badge-rounded badge-danger light font-w500">Não recomendado</span></li>
                 <%end%>
 
-                <%if  r.total.between?(5.0, 6.9)%>
+                <%if  r.rank.between?(5.0, 6.9)%>
                 <li class="ml-auto"><span class="badge badge-rounded badge-success light font-w500">Regular</span></li>
                 <%end%>
 
-                <%if r.total.between?(7.0, 8.9)%>
+                <%if r.rank.between?(7.0, 8.9)%>
                 <li class="ml-auto"><span class="badge badge-rounded badge-warning light font-w500">Bom</span></li>
                 <%end%>
 
-                <%if r.total >= 9.0%>
+                <%if r.rank >= 9.0%>
                 <li class="ml-auto"><span class="badge badge-rounded badge text-gold light font-w500">Excelente</span></li>
                 <%end%>
 
@@ -34,15 +34,15 @@
         </div>
         <div class="media-footer align-self-center">
             <div class="star-review text-md-center">
-                <span class="text-secondary"><%=r.total.round(1)%></span>
-                <%if r.total.between?(1, 2)%>
+                <span class="text-secondary"><%=r.rank.round(1)%></span>
+                <%if r.rank.between?(1, 2)%>
                 <i class="fa fa-star text-primary"></i>
                 <i class="fa fa-star text-gray"></i>
                 <i class="fa fa-star text-gray"></i>
                 <i class="fa fa-star text-gray"></i>
                 <i class="fa fa-star text-gray"></i>
                 <%end%>
-                <%if r.total.between?(3.0, 4.9)%>
+                <%if r.rank.between?(3.0, 4.9)%>
                 <i class="fa fa-star text-gold"></i>
                 <i class="fa fa-star text-gold"></i>
                 <i class="fa fa-star text-gray"></i>
@@ -50,7 +50,7 @@
                 <i class="fa fa-star text-gray"></i>
                 <%end%>
 
-                <%if  r.total.between?(5.0, 6.9)%>
+                <%if  r.rank.between?(5.0, 6.9)%>
                 <i class="fa fa-star text-gold"></i>
                 <i class="fa fa-star text-gold"></i>
                 <i class="fa fa-star-half-full text-gold"></i>
@@ -58,7 +58,7 @@
                 <i class="fa fa-star text-gray"></i>
                 <%end%>
 
-                <%if r.total.between?(7.0, 8.9)%>
+                <%if r.rank.between?(7.0, 8.9)%>
                 <i class="fa fa-star text-gold"></i>
                 <i class="fa fa-star text-gold"></i>
                 <i class="fa fa-star text-gold"></i>
@@ -66,7 +66,7 @@
                 <i class="fa fa-star text-gray"></i>
                 <%end%>
 
-                <%if r.total >= 9.0%>
+                <%if r.rank >= 9.0%>
                 <i class="fa fa-star text-gold"></i>
                 <i class="fa fa-star text-gold"></i>
                 <i class="fa fa-star text-gold"></i>

@@ -3,4 +3,4 @@
 //= link_directory ../stylesheets .css
 //= link_directory ../vendors .css, .js
 //= link_directory ../icons .css, .js
-//= link_tree ../javascripts
+//= link_tree ../builds

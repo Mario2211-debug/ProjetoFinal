@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
 layout 'home/home'
-    def home
+def home
+      @busca = Search.new
+
 if logged_in?
   @feed_items = Queixa.all.paginate(page: params[:page], per_page: 10)
   @queixas = Queixa.all.paginate(page: params[:page], per_page: 10)
@@ -21,23 +23,26 @@ end
     @empresa = Empresa.all
 end
 
-    def categoria
+def categoria
       @ramo = Atividade.all
       @empresa = Empresa.all
       #@empresa = Empresa.all.sort_by(&:atividade)
-    end
+end
 
-#def search
-  #  @queixa = Queixa.search(params[:search])
- #end
+def compare
+  @empresa = Empresa.all
+#  @compare = Comparacao.find(params[:id])
 
-      def contact
-      end
+end
 
+def new_compare
+  @comparacao = Comparacao.new
+end
 
-      def help
-      end
+def search
+    @resultado = Empresa.search(params[:search])
+end
 
-      def about
-      end
+def about
+end
   end

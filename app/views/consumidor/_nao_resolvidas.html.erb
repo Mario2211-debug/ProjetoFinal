@@ -1,7 +1,7 @@
 <div class="grid-margin stretch-card">
 <div class="card">
 <div class="card-body">
-<h4 class="card-title">Minhas reclamações</h4>
+<h4 class="card-title">Não Resolvidas </h4>
 <div class="table-responsive">
 <table class="table">
 <thead>
@@ -16,8 +16,8 @@
   <%@nao_resolvida.each do |q|%>
 <tr>
   <td><%= q.empresa.nome%></td>
-  <td><%= q.titulo%></td>
-  <td><%= q.created_at%></td>
+  <td><%= q.titulo.truncate(24)%></td>
+  <td><%= q.created_at.strftime("%Y-%m-%d %H:%M") %></td>
 
   <td><%if q.situacao_id == 1%>
       <div class="badge badge-outline-success">

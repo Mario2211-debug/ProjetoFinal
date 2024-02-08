@@ -15,7 +15,7 @@ class Consumidor::AddempresasController < ApplicationController
 
   def create
     #@add_empresa = current_user.addempresas.build(allowed_params)
-@add_empresa = Addempresa.new(params[allowed_params])
+@add_empresa = Addempresa.new(allowed_params)
 @add_empresa.user_id = current_user.id
 @add_empresa.situacao_id = "3"
 #@add_empresa = Empresa.find(params[:id])
@@ -25,8 +25,6 @@ class Consumidor::AddempresasController < ApplicationController
       redirect_to root_path
     end
   end
-
-
 
             def edit
               @add_empresa = Addempresa.find(params[:id])
