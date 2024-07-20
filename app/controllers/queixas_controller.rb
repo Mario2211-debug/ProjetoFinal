@@ -4,7 +4,10 @@ class QueixasController < ApplicationController
 
   def index
     # @queixas = Queixa.paginate(page: params[:page], per_page: 4).reverse
-    @queixas =  Queixa.all.limit(3).order("created_at DESC")
+    @queixas =  Queixa.all.limit(3).order("created_at DESC")6
+
+    @queixa = Queixa.all
+    render json:@queixa
    end
 
 #  def index
@@ -64,7 +67,7 @@ end
     #  @user = User.find(params[:id])
   #add_empresa = Addempresa.find_by_id(params[:id])
   @queixa = Queixa.find(params[:id])
-      if @queixa.update_attributes(update_params)
+    if @queixa.update_attributes(update_params)
         flash[:success] = "Assunto atualizado"
          redirect_back_or  user_path(current_user)
     else

@@ -2,10 +2,9 @@ class EmpresasController < ApplicationController
 
   def index
     # @empresas = Empresa.where(situacao_id:6).order(votos: :desc).paginate(page: params[:page], per_page: 10)
-    @empresas = Empresa.includes(:atividade, :avatar_attachment).where(situacao_id: 6).order(votos: :desc).paginate(page: params[:page], per_page: 10)
-    @categorias = Atividade.order(:id).limit(7)
-  #  @empresas = Atividade.order(:id).limit(7)
+    @empresa = Empresa.all
 
+render json: @empresa
   end
 
   def show
